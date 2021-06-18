@@ -1,4 +1,4 @@
-package com.qidaiai.systemweb;
+package com.qidaiai;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
