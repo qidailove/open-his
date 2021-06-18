@@ -1,6 +1,6 @@
 package com.qidaiai.hiscommons.dto;
 
-import com.qidaiai.hiscommons.domain.SimpalUser;
+import com.qidaiai.hiscommons.domain.SimpleUser;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -26,7 +26,7 @@ public class BaseDto implements Serializable {
     /**
      * 当前操作对象
      */
-    public SimpalUser simpalUser;
+    public SimpleUser simpleUser;
 
     /**
      * 开始时间

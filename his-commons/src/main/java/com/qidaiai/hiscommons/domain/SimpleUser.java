@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SimpalUser implements Serializable {
+public class SimpleUser implements Serializable {
 
     private Serializable userId;
 
