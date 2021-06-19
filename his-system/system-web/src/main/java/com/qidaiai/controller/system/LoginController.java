@@ -60,7 +60,7 @@ public class LoginController {
     /**
      * 获取用户信息
      */
-    @GetMapping("/login/getInfo")
+    @PostMapping("/login/getInfo")
     public AjaxResult getInfo(){
         Subject subject = SecurityUtils.getSubject();
         ActiverUser activerUser = (ActiverUser) subject.getPrincipal();
@@ -75,7 +75,7 @@ public class LoginController {
     /**
      * 用户退出
      */
-    @GetMapping("login/logout")
+    @PostMapping("login/logout")
     public AjaxResult logout(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
