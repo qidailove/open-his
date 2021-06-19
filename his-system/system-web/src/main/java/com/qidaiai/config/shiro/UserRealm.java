@@ -22,7 +22,6 @@ import org.springframework.context.annotation.Lazy;
  * @author qidaiai
  * @date 2021/06/18
  */
-@Configuration
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired

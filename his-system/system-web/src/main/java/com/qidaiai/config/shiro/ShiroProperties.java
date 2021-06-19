@@ -2,6 +2,7 @@ package com.qidaiai.config.shiro;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * shiro自定义配置参数
@@ -9,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2021/06/18
  */
 @Data
+@Configuration
 @ConfigurationProperties(prefix = "shiro")
 public class ShiroProperties {
 
