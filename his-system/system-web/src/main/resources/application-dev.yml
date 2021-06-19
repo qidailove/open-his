@@ -40,6 +40,7 @@ logging:
     host: 47.107.49.181
     password:
 
+
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss
 
