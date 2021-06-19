@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import com.qidaiai.domain.User;
 import com.qidaiai.mapper.UserMapper;
 import com.qidaiai.service.UserService;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired

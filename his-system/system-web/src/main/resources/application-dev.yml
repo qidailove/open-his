@@ -29,16 +29,24 @@ spring:
         deny:
         url-pattern: /druid/*
         enabled: true #表示启动数据源监控
+  #redis配置
+  redis:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 100000
+        min-idle: 0
+
+    port: 6390
+    host: 47.107.49.181
+    timeout: 150000
 
 logging:
   level:
     com.qidaiai.mapper: debug
 
-  #redis配置
-  redis:
-    port: 6390
-    host: 47.107.49.181
-    password:
+
+
 
 
   mvc:
