@@ -3,6 +3,7 @@ package com.qidaiai.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.qidaiai.hiscommons.constants.Constants;
 import com.qidaiai.hiscommons.domain.SimpleUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.qidaiai.domain.Menu;
@@ -14,7 +15,7 @@ import java.util.List;
 @Service
 public class MenuServiceImpl implements MenuService {
 
-    @Resource
+    @Autowired
     private MenuMapper menuMapper;
 
     @Override

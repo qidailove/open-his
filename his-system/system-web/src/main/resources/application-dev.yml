@@ -8,9 +8,10 @@ spring:
   #数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.107.49.181:3306/bjxst-his?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    url: jdbc:mysql://47.107.49.181:3306/bjsxt-his?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
     username: root
     password: root
+
 
     #注入的数据源的类型，默认是HikariDataSource
     type: com.alibaba.druid.pool.DruidDataSource
@@ -28,6 +29,10 @@ spring:
         deny:
         url-pattern: /druid/*
         enabled: true #表示启动数据源监控
+
+logging:
+  level:
+    com.qidaiai.mapper: debug
 
   #redis配置
   redis:
@@ -63,7 +68,7 @@ shiro:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:mapper/*/*Mapper.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
   global-config:
 
     #数据库主键id自增
@@ -92,6 +97,6 @@ dubbo:
     name: his-system-web-service
   registry:
     address: zookeeper://47.107.49.181:2181
+    timeout: 100000
   consumer:
     check: false
-

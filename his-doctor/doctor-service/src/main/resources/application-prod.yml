@@ -4,7 +4,7 @@ spring:
   #数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.107.49.181:3306/bjxst-his?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    url: jdbc:mysql://47.107.49.181:3306/bjsxt-his?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
     username: root
     password: root
 
@@ -55,5 +55,6 @@ dubbo:
     name: dubbo
   scan:
     base-packages: com.qidaiai.service.impl
+
 
 

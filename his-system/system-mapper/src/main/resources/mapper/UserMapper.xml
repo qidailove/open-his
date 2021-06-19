@@ -48,4 +48,8 @@
     where user_id = #{userId,jdbcType=BIGINT}
   </select>
 
+  <select id="selectOne" parameterType="java.lang.String" resultType="com.qidaiai.domain.User">
+    select * from sys_user where phone = #{phone}
+  </select>
+
 </mapper>
