@@ -2,6 +2,8 @@
 #启动端口
 server:
   port: 8080
+#  servlet:
+#    context-path: /dev-api/
 
 #spring的配置
 spring:

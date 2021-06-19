@@ -20,7 +20,7 @@ public class LoginBodyDto {
      * 用户名
      */
     @NotNull(message = "用户名不能为空")
-    private String userName;
+    private String username;
 
     /**
      * 密码
