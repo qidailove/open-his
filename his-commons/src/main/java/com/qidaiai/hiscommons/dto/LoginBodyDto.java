@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * 登录的数据传输对象
  * @author qidaiai
@@ -17,11 +19,13 @@ public class LoginBodyDto {
     /**
      * 用户名
      */
+    @NotNull(message = "用户名不能为空")
     private String userName;
 
     /**
      * 密码
      */
+    @NotNull(message = "用户密码不能为空")
     private String password;
 
     /**
