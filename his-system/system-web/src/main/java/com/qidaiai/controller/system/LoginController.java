@@ -41,7 +41,7 @@ public class LoginController {
     @PostMapping("login/doLogin")
     public AjaxResult login(@RequestBody @Validated LoginBodyDto loginBodyDto, HttpServletRequest request){
         AjaxResult ajaxResult = AjaxResult.success();
-        String userName = loginBodyDto.getUserName();
+        String userName = loginBodyDto.getUsername();
         String password = loginBodyDto.getPassword();
         //构造用户名和密码的token
         UsernamePasswordToken token  = new UsernamePasswordToken(userName, password);
@@ -61,7 +61,7 @@ public class LoginController {
     /**
      * 获取用户信息
      */
-    @PostMapping("/login/getInfo")
+    @GetMapping("/login/getInfo")
     public AjaxResult getInfo(){
         Subject subject = SecurityUtils.getSubject();
         ActiverUser activerUser = (ActiverUser) subject.getPrincipal();
