@@ -1,19 +1,56 @@
 package com.qidaiai.service;
 
 import com.qidaiai.domain.DictType;
+import com.qidaiai.dto.DictTypeDto;
+import com.qidaiai.hiscommons.vo.DataGridView;
+
 public interface DictTypeService{
 
 
-    int deleteByPrimaryKey(Long dictId);
+    /**
+     * 分页查询字典类型
+     * @param dictTypeDto
+     * @return
+     */
+    DataGridView listPage(DictTypeDto dictTypeDto);
+    /**
+     * 查询所有字典类型
+     * @return
+     */
+    DataGridView list();
 
-    int insert(DictType record);
+    /**
+     * 检查字典类型是否存在
+     * @param dictType
+     * @return
+     */
+    Boolean checkDictTypeUnique(Long dictId,String dictType);
 
-    int insertSelective(DictType record);
+    /**
+     * 插入新的字典类型
+     * @param dictTypeDto
+     * @return
+     */
+    int insert(DictTypeDto dictTypeDto);
+    /**
+     * 修改的字典类型
+     * @param dictTypeDto
+     * @return
+     */
+    int update(DictTypeDto dictTypeDto);
 
-    DictType selectByPrimaryKey(Long dictId);
+    /**
+     * 根据ID删除字典类型
+     * @param dictIds
+     * @return
+     */
+    int deleteDictTypeByIds(Long[] dictIds);
 
-    int updateByPrimaryKeySelective(DictType record);
-
-    int updateByPrimaryKey(DictType record);
+    /**
+     * 根据ID查询一个字典类型
+     * @param dictId
+     * @return
+     */
+    DictType selectDictTypeById(Long dictId);
 
 }

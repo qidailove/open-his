@@ -68,4 +68,22 @@ public class DictType {
     */
     @ApiModelProperty(value="备注")
     private String remark;
+
+    public static final String COL_DICT_ID = "dict_id";
+
+    public static final String COL_DICT_NAME = "dict_name";
+
+    public static final String COL_DICT_TYPE = "dict_type";
+
+    public static final String COL_STATUS = "status";
+
+    public static final String COL_CREATE_BY = "create_by";
+
+    public static final String COL_CREATE_TIME = "create_time";
+
+    public static final String COL_UPDATE_BY = "update_by";
+
+    public static final String COL_UPDATE_TIME = "update_time";
+
+    public static final String COL_REMARK = "remark";
 }

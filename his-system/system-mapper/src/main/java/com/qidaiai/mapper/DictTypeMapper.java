@@ -1,6 +1,9 @@
 package com.qidaiai.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.qidaiai.domain.DictType;
+
+import java.util.List;
 
 public interface DictTypeMapper {
     /**
@@ -44,4 +47,5 @@ public interface DictTypeMapper {
      * @return update count
      */
     int updateByPrimaryKey(DictType record);
+
 }

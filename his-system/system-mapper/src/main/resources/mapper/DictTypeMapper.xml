@@ -140,4 +140,5 @@
       remark = #{remark,jdbcType=VARCHAR}
     where dict_id = #{dictId,jdbcType=BIGINT}
   </update>
+
 </mapper>
