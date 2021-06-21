@@ -1,5 +1,6 @@
 package com.qidaiai.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.qidaiai.domain.User;
@@ -16,16 +17,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User queryUserByPhone(String phone) {
-
-//        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
-//        queryWrapper.eq(User.COL_PHONE,phone);
-        User user = this.userMapper.selectOne(phone);
+        QueryWrapper<User> qw=new QueryWrapper<>();
+        qw.eq(User.COL_PHONE,phone);
+        User user = (User) this.userMapper.selectOne(qw);
         return user;
     }
 
     @Override
     public User getOne(Long userId) {
-        return this.userMapper.selectById(userId);
+        return (User) this.userMapper.selectById(userId);
     }
+
 }
 

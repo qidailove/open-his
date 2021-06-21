@@ -50,7 +50,7 @@ public class DictTypeServiceImpl  implements DictTypeService {
         dictId = (dictId == null) ? -1L : dictId;
         QueryWrapper<DictType> qw=new QueryWrapper<>();
         qw.eq(DictType.COL_DICT_TYPE, dictType);
-        DictType sysDictType = this.dictTypeMapper.selectOne(qw);
+        DictType sysDictType = (DictType) this.dictTypeMapper.selectOne(qw);
         if(null!=sysDictType &&dictId.longValue()!=sysDictType.getDictId().longValue()){
             return true; //说明不存在
         }
@@ -87,6 +87,7 @@ public class DictTypeServiceImpl  implements DictTypeService {
 
     @Override
     public DictType selectDictTypeById(Long dictId) {
-        return this.dictTypeMapper.selectById(dictId);
+        DictType dictType = (DictType) this.dictTypeMapper.selectById(dictId);
+        return dictType;
     }
 }

@@ -1,11 +1,12 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.DictType;
 
 import java.util.List;
 
-public interface DictTypeMapper {
+public interface DictTypeMapper extends BaseMapper {
     /**
      * delete by primary key
      * @param dictId primaryKey

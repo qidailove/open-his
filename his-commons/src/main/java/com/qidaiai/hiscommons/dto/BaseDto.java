@@ -1,6 +1,9 @@
 package com.qidaiai.hiscommons.dto;
 
 import com.qidaiai.hiscommons.domain.SimpleUser;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -11,6 +14,9 @@ import java.util.Date;
  * @author qidaiai
  * @date 2021/06/18
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BaseDto implements Serializable {
 
     /**

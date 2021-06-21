@@ -1,14 +1,9 @@
 package com.qidaiai.mapper;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.qidaiai.domain.User;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper {
 
-//    User selectOne(QueryWrapper<User> queryWrapper);
-    User selectOne(String phone);
-
-    User selectById(Long userId);
 }

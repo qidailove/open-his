@@ -34,22 +34,10 @@
 
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    user_id, dept_id, user_name, user_type, sex, age, picture, background, phone, email, 
-    strong, honor, introduction, user_rank, `password`, last_login_time, last_login_ip, 
-    `status`, union_id, open_id, create_time, update_time, create_by, update_by, salt, 
-    scheduling_flag
+    user_id, dept_id, user_name, user_type, sex, age, picture, background, phone, email,
+    strong, honor, introduction, user_rank, `password`, last_login_time, last_login_ip,
+    `status`, union_id, open_id, create_time, update_time, create_by, update_by, salt,
+    del_flag, scheduling_flag
   </sql>
-
-
-  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long">
-    select
-    <include refid="Base_Column_List" />
-    from sys_user
-    where user_id = #{userId,jdbcType=BIGINT}
-  </select>
-
-  <select id="selectOne" parameterType="java.lang.String" resultType="com.qidaiai.domain.User">
-    select * from sys_user where phone = #{phone}
-  </select>
 
 </mapper>
