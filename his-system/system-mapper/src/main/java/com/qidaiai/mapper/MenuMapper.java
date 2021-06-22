@@ -24,4 +24,6 @@ public interface MenuMapper extends BaseMapper<Menu> {
      */
     List<Long> queryMenuIdsByRoleId(@Param("roleId") Long roleId);
 
+    int deleteById(@Param(value = "menuId") Long menuId);
+
 }

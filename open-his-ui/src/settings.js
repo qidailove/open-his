@@ -1,5 +1,5 @@
 module.exports = {
-  title: '尚学堂医疗管理云平台',
+  title: '分布式医疗管理云平台',
 
   /**
    * @type {boolean} true | false

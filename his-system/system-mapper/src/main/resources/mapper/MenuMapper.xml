@@ -35,4 +35,9 @@
     on m.menu_id=rm.menu_id and rm.role_id=#{roleId})
   </select>
 
+  <delete id="deleteById" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sys_menu where menu_id = #{menuId}
+  </delete>
+
 </mapper>
