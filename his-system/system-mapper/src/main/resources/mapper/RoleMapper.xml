@@ -158,6 +158,11 @@
     select * from sys_role ${ew.customSqlSegment}
   </select>
 
+  <select id="selectRoleIdsByUserId" resultType="java.lang.Long">
+    select * from sys_role_user where user_id = #{userId}
+  </select>
+
+
   <delete id="deleteRoleMenuByRoleIds" >
     delete from sys_role_menu
     <where>
@@ -176,7 +181,29 @@
     </where>
   </delete>
 
+  <delete id="deleteRoleUserByUserIds">
+    delete from sys_role_user
+    <where>
+      <foreach collection="ids" item="role_user_id" index="index" open="(" close=")" separator=",">
+        #{role_user_id}
+      </foreach>
+    </where>
+  </delete>
+
+  <delete id="deleteRoleMenuByMenuIds">
+    delete from sys_role_menu
+    <where>
+      <foreach collection="ids" item="role_menu_id" index="index" open="(" close=")" separator=",">
+        #{role_menu_id}
+      </foreach>
+    </where>
+  </delete>
+
   <insert id="saveRoleMenu" parameterType="java.lang.Long">
     insert  into sys_role_menu(role_id, menu_id) values(#{roleId},#{menuId})
+  </insert>
+
+  <insert id="saveRoleUser">
+    insert into sys_role_user(user_id, role_id) values (#{userId}, #{roleId})
   </insert>
 </mapper>

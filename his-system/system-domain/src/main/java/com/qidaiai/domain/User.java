@@ -1,5 +1,7 @@
 package com.qidaiai.domain;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qidaiai.hiscommons.domain.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,6 +17,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName(value = "sys_user")
+@JsonIgnoreProperties(value = {"salt","password","unionId","openId"})
 public class User extends BaseEntity {
     /**
      * 用户ID
