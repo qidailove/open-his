@@ -62,4 +62,11 @@ public interface RoleMapper extends BaseMapper {
      * @param ids
      */
     void deleteRoleUserByRoleIds(@Param("ids") List<Long> ids);
+
+    /**
+     * 保存角色和菜单之关的关系
+     * @param roleId
+     * @param menuId
+     */
+    void saveRoleMenu(@Param("roleId") Long roleId, @Param("menuId") Long menuId);
 }

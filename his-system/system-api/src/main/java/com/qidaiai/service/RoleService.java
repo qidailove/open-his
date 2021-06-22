@@ -49,4 +49,11 @@ public interface RoleService{
      */
     int deleteRoleByIds(Long[] roleIds);
 
+    /**
+     * 保存角色和菜单之间的关系
+     * @param roleId
+     * @param menuIds
+     */
+    void saveRoleMenu(Long roleId, Long[] menuIds);
+
 }
