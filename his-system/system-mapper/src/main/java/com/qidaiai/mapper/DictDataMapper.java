@@ -1,10 +1,8 @@
 package com.qidaiai.mapper;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.DictData;
 
-import java.util.List;
 
 public interface DictDataMapper extends BaseMapper {
     /**

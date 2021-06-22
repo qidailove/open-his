@@ -1,5 +1,6 @@
 package com.qidaiai.domain;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.qidaiai.hiscommons.dto.BaseDto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@TableName(value = "sys_oper_log")
 public class OperLog extends BaseDto {
     /**
     * 日志主键

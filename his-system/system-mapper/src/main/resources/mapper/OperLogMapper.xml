@@ -210,4 +210,21 @@
       oper_time = #{operTime,jdbcType=TIMESTAMP}
     where oper_id = #{operId,jdbcType=BIGINT}
   </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from sys_oper_log ${ew.customSqlSegment}
+  </select>
+
+
+  <delete id="deleteBatchIds">
+    delete from sys_oper_log where oper_id in
+    <foreach collection="coll" index="index" item="oper_id" open="(" close=")" separator=",">
+      ${oper_id}
+    </foreach>
+  </delete>
+
+
+  <delete id="deleteAll">
+    delete from sys_oper_log
+  </delete>
 </mapper>

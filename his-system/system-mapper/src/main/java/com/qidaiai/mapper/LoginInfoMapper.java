@@ -45,4 +45,6 @@ public interface LoginInfoMapper extends BaseMapper {
      * @return update count
      */
     int updateByPrimaryKey(LoginInfo record);
+
+    int deleteAll();
 }

@@ -53,7 +53,7 @@ public class LoginInfoServiceImpl implements LoginInfoService{
 
     @Override
     public int clearLoginInfo() {
-        return this.loginInfoMapper.delete(null);
+        return this.loginInfoMapper.deleteAll();
     }
 
 }

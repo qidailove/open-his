@@ -164,4 +164,19 @@
       login_time = #{loginTime,jdbcType=TIMESTAMP}
     where info_id = #{infoId,jdbcType=BIGINT}
   </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from sys_login_info ${ew.customSqlSegment}
+  </select>
+
+  <delete id="deleteBatchIds">
+    delete from sys_login_info where sys_login_info.info_id in
+    <foreach collection="coll" item="info_id" index="index" open="(" close=")" separator=",">
+      #{info_id}
+    </foreach>
+  </delete>
+
+  <delete id="deleteAll" >
+    delete from sys_login_info
+  </delete>
 </mapper>

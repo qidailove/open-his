@@ -40,6 +40,11 @@ public class OperLogServiceImpl implements OperLogService{
         return new DataGridView(page.getTotal(), page.getRecords());
     }
 
+    /**
+     * 根据id批量删除记录
+     * @param infoIds
+     * @return
+     */
     @Override
     public int deleteOperLogByIds(Long[] infoIds) {
         if (null != infoIds && infoIds.length > 0) {
@@ -48,9 +53,13 @@ public class OperLogServiceImpl implements OperLogService{
         return 0;
     }
 
+    /**
+     * 删除所有记录
+     * @return
+     */
     @Override
     public int clearAllOperLog() {
-        return this.operLogMapper.delete(null);
+        return this.operLogMapper.deleteAll();
     }
 
 }

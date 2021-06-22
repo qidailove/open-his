@@ -16,11 +16,13 @@
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     dict_code, dict_sort, dict_label, dict_value, dict_type, `status`, remark, create_by, 
     create_time, update_by, update_time
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
@@ -149,6 +151,7 @@
     </set>
     where dict_code = #{dictCode,jdbcType=BIGINT}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.DictData">
     <!--@mbg.generated-->
     update sys_dict_data
@@ -165,4 +168,7 @@
     where dict_code = #{dictCode,jdbcType=BIGINT}
   </update>
 
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from sys_dict_data ${ew.customSqlSegment}
+  </select>
 </mapper>
