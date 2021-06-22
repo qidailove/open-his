@@ -228,10 +228,10 @@ export default {
     },
     // 修改
     handleUpdate(row) {
-      this.reset()
       this.getTreeselect()
       getMenuById(row.menuId).then(res => {
         this.form = res.data
+        this.reset()
         this.open = true
         this.title = '修改菜单权限'
       })
@@ -286,6 +286,7 @@ export default {
     },
     cancel() {
       this.open = false
+      this.title = ''
     },
     reset() {
       this.form = {
