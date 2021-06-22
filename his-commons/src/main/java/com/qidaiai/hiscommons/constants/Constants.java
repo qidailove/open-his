@@ -135,4 +135,21 @@ public interface Constants {
     String PAY_TYPE_2 = "2"; //微信
     String PAY_TYPE_3 = "3"; //银联
 
+    /**
+     * redis的字典前缀
+     */
+    String DICT_REDIS_PROFIX="dict:";
+
+    /**
+     * 登陆状态  0 成功  1失败
+     */
+    String LOGIN_SUCCESS = "0";
+    String LOGIN_ERROR = "1";
+
+    /**
+     * 登陆类型0系统用户1患者用户
+     */
+    String LOGIN_TYPE_SYSTEM = "0" ;
+    String LOGIN_TYPE_PATIENT = "1" ;
+
 }

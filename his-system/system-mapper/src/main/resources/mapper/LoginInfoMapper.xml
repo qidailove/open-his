@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.LoginInfoMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.LoginInfo">
+    <!--@mbg.generated-->
+    <!--@Table sys_login_info-->
+    <id column="info_id" jdbcType="BIGINT" property="infoId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="login_account" jdbcType="VARCHAR" property="loginAccount" />
+    <result column="ip_addr" jdbcType="VARCHAR" property="ipAddr" />
+    <result column="login_location" jdbcType="VARCHAR" property="loginLocation" />
+    <result column="browser" jdbcType="VARCHAR" property="browser" />
+    <result column="os" jdbcType="VARCHAR" property="os" />
+    <result column="login_status" jdbcType="CHAR" property="loginStatus" />
+    <result column="login_type" jdbcType="CHAR" property="loginType" />
+    <result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    info_id, user_name, login_account, ip_addr, login_location, browser, os, login_status, 
+    login_type, msg, login_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_login_info
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sys_login_info
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="info_id" keyProperty="infoId" parameterType="com.qidaiai.domain.LoginInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_login_info (user_name, login_account, ip_addr, 
+      login_location, browser, os, 
+      login_status, login_type, msg, 
+      login_time)
+    values (#{userName,jdbcType=VARCHAR}, #{loginAccount,jdbcType=VARCHAR}, #{ipAddr,jdbcType=VARCHAR}, 
+      #{loginLocation,jdbcType=VARCHAR}, #{browser,jdbcType=VARCHAR}, #{os,jdbcType=VARCHAR}, 
+      #{loginStatus,jdbcType=CHAR}, #{loginType,jdbcType=CHAR}, #{msg,jdbcType=VARCHAR}, 
+      #{loginTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="info_id" keyProperty="infoId" parameterType="com.qidaiai.domain.LoginInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_login_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="loginAccount != null">
+        login_account,
+      </if>
+      <if test="ipAddr != null">
+        ip_addr,
+      </if>
+      <if test="loginLocation != null">
+        login_location,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="os != null">
+        os,
+      </if>
+      <if test="loginStatus != null">
+        login_status,
+      </if>
+      <if test="loginType != null">
+        login_type,
+      </if>
+      <if test="msg != null">
+        msg,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAccount != null">
+        #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null">
+        #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="loginLocation != null">
+        #{loginLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null">
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null">
+        #{loginStatus,jdbcType=CHAR},
+      </if>
+      <if test="loginType != null">
+        #{loginType,jdbcType=CHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.LoginInfo">
+    <!--@mbg.generated-->
+    update sys_login_info
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAccount != null">
+        login_account = #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null">
+        ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="loginLocation != null">
+        login_location = #{loginLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null">
+        os = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null">
+        login_status = #{loginStatus,jdbcType=CHAR},
+      </if>
+      <if test="loginType != null">
+        login_type = #{loginType,jdbcType=CHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.LoginInfo">
+    <!--@mbg.generated-->
+    update sys_login_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      login_account = #{loginAccount,jdbcType=VARCHAR},
+      ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      login_location = #{loginLocation,jdbcType=VARCHAR},
+      browser = #{browser,jdbcType=VARCHAR},
+      os = #{os,jdbcType=VARCHAR},
+      login_status = #{loginStatus,jdbcType=CHAR},
+      login_type = #{loginType,jdbcType=CHAR},
+      msg = #{msg,jdbcType=VARCHAR},
+      login_time = #{loginTime,jdbcType=TIMESTAMP}
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </update>
+</mapper>

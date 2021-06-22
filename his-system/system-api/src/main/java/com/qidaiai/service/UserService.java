@@ -9,7 +9,7 @@ public interface UserService{
      * @param phone
      * @return
      */
-    Object queryUserByPhone(String phone);
+    User queryUserByPhone(String phone);
 
     /**
      * 根据用户id查询用户

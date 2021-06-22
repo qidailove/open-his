@@ -1,57 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qidaiai.mapper.DictTypeMapper">
-  <resultMap id="BaseResultMap" type="com.qidaiai.domain.DictType">
+<mapper namespace="com.qidaiai.mapper.DictDataMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.DictData">
     <!--@mbg.generated-->
-    <!--@Table sys_dict_type-->
-    <id column="dict_id" jdbcType="BIGINT" property="dictId" />
-    <result column="dict_name" jdbcType="VARCHAR" property="dictName" />
+    <!--@Table sys_dict_data-->
+    <id column="dict_code" jdbcType="BIGINT" property="dictCode" />
+    <result column="dict_sort" jdbcType="INTEGER" property="dictSort" />
+    <result column="dict_label" jdbcType="VARCHAR" property="dictLabel" />
+    <result column="dict_value" jdbcType="VARCHAR" property="dictValue" />
     <result column="dict_type" jdbcType="VARCHAR" property="dictType" />
     <result column="status" jdbcType="CHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    dict_id, dict_name, dict_type, `status`, create_by, create_time, update_by, update_time, 
-    remark
+    dict_code, dict_sort, dict_label, dict_value, dict_type, `status`, remark, create_by, 
+    create_time, update_by, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
-    from sys_dict_type
-    where dict_id = #{dictId,jdbcType=BIGINT}
+    from sys_dict_data
+    where dict_code = #{dictCode,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
-    delete from sys_dict_type
-    where dict_id = #{dictId,jdbcType=BIGINT}
+    delete from sys_dict_data
+    where dict_code = #{dictCode,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="dict_id" keyProperty="dictId" parameterType="com.qidaiai.domain.DictType" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="dict_code" keyProperty="dictCode" parameterType="com.qidaiai.domain.DictData" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into sys_dict_type (dict_name, dict_type, `status`, 
+    insert into sys_dict_data (dict_sort, dict_label, dict_value, 
+      dict_type, `status`, remark, 
       create_by, create_time, update_by, 
-      update_time, remark)
-    values (#{dictName,jdbcType=VARCHAR}, #{dictType,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      update_time)
+    values (#{dictSort,jdbcType=INTEGER}, #{dictLabel,jdbcType=VARCHAR}, #{dictValue,jdbcType=VARCHAR}, 
+      #{dictType,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
       #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="dict_id" keyProperty="dictId" parameterType="com.qidaiai.domain.DictType" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="dict_code" keyProperty="dictCode" parameterType="com.qidaiai.domain.DictData" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into sys_dict_type
+    insert into sys_dict_data
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="dictName != null">
-        dict_name,
+      <if test="dictSort != null">
+        dict_sort,
+      </if>
+      <if test="dictLabel != null">
+        dict_label,
+      </if>
+      <if test="dictValue != null">
+        dict_value,
       </if>
       <if test="dictType != null">
         dict_type,
       </if>
       <if test="status != null">
         `status`,
+      </if>
+      <if test="remark != null">
+        remark,
       </if>
       <if test="createBy != null">
         create_by,
@@ -65,19 +78,25 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="remark != null">
-        remark,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="dictName != null">
-        #{dictName,jdbcType=VARCHAR},
+      <if test="dictSort != null">
+        #{dictSort,jdbcType=INTEGER},
+      </if>
+      <if test="dictLabel != null">
+        #{dictLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="dictValue != null">
+        #{dictValue,jdbcType=VARCHAR},
       </if>
       <if test="dictType != null">
         #{dictType,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
@@ -91,23 +110,29 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.DictType">
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.DictData">
     <!--@mbg.generated-->
-    update sys_dict_type
+    update sys_dict_data
     <set>
-      <if test="dictName != null">
-        dict_name = #{dictName,jdbcType=VARCHAR},
+      <if test="dictSort != null">
+        dict_sort = #{dictSort,jdbcType=INTEGER},
+      </if>
+      <if test="dictLabel != null">
+        dict_label = #{dictLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="dictValue != null">
+        dict_value = #{dictValue,jdbcType=VARCHAR},
       </if>
       <if test="dictType != null">
         dict_type = #{dictType,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
@@ -121,32 +146,23 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
     </set>
-    where dict_id = #{dictId,jdbcType=BIGINT}
+    where dict_code = #{dictCode,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.DictType">
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.DictData">
     <!--@mbg.generated-->
-    update sys_dict_type
-    set dict_name = #{dictName,jdbcType=VARCHAR},
+    update sys_dict_data
+    set dict_sort = #{dictSort,jdbcType=INTEGER},
+      dict_label = #{dictLabel,jdbcType=VARCHAR},
+      dict_value = #{dictValue,jdbcType=VARCHAR},
       dict_type = #{dictType,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      remark = #{remark,jdbcType=VARCHAR}
-    where dict_id = #{dictId,jdbcType=BIGINT}
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where dict_code = #{dictCode,jdbcType=BIGINT}
   </update>
 
-  <select id="selectPage" resultMap="BaseResultMap">
-    select * from sys_dict_type ${ew.customSqlSegment}
-  </select>
-
-  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select * from sys_dict_type where dict_id = #{dictId}
-  </select>
-  
 </mapper>

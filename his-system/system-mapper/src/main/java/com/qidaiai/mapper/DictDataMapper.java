@@ -1,49 +1,53 @@
 package com.qidaiai.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.DictType;
+import com.qidaiai.domain.DictData;
 
-public interface DictTypeMapper extends BaseMapper {
+import java.util.List;
+
+public interface DictDataMapper extends BaseMapper {
     /**
      * delete by primary key
-     * @param dictId primaryKey
+     * @param dictCode primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(Long dictId);
+    int deleteByPrimaryKey(Long dictCode);
 
     /**
      * insert record to table
      * @param record the record
      * @return insert count
      */
-    int insert(DictType record);
+    int insert(DictData record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(DictType record);
+    int insertSelective(DictData record);
 
     /**
      * select by primary key
-     * @param dictId primary key
+     * @param dictCode primary key
      * @return object by primary key
      */
-    DictType selectByPrimaryKey(Long dictId);
+    DictData selectByPrimaryKey(Long dictCode);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(DictType record);
+    int updateByPrimaryKeySelective(DictData record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(DictType record);
+    int updateByPrimaryKey(DictData record);
 
+//    List<DictData> selectList(QueryWrapper queryWrapper);
 }

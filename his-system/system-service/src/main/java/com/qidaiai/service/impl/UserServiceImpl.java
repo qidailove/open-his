@@ -17,9 +17,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User queryUserByPhone(String phone) {
-        QueryWrapper<User> qw=new QueryWrapper<>();
-        qw.eq(User.COL_PHONE,phone);
-        User user = (User) this.userMapper.selectOne(qw);
+        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq(User.COL_PHONE,phone);
+        User user = (User) this.userMapper.selectOne(queryWrapper);
         return user;
     }
 

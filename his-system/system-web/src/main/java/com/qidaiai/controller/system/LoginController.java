@@ -1,5 +1,7 @@
 package com.qidaiai.controller.system;
 
+import com.qidaiai.aspectj.annotation.Log;
+import com.qidaiai.aspectj.enums.BusinessType;
 import com.qidaiai.domain.Menu;
 import com.qidaiai.hiscommons.constants.Constants;
 import com.qidaiai.hiscommons.constants.HttpStatus;
@@ -76,6 +78,7 @@ public class LoginController {
      * 用户退出
      */
     @PostMapping("login/logout")
+    @Log(title = "修改字典数据",businessType = BusinessType.UPDATE)
     public AjaxResult logout(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();

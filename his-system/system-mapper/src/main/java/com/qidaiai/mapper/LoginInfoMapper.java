@@ -1,49 +1,48 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.DictType;
+import com.qidaiai.domain.LoginInfo;
 
-public interface DictTypeMapper extends BaseMapper {
+public interface LoginInfoMapper extends BaseMapper {
     /**
      * delete by primary key
-     * @param dictId primaryKey
+     * @param infoId primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(Long dictId);
+    int deleteByPrimaryKey(Long infoId);
 
     /**
      * insert record to table
      * @param record the record
      * @return insert count
      */
-    int insert(DictType record);
+    int insert(LoginInfo record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(DictType record);
+    int insertSelective(LoginInfo record);
 
     /**
      * select by primary key
-     * @param dictId primary key
+     * @param infoId primary key
      * @return object by primary key
      */
-    DictType selectByPrimaryKey(Long dictId);
+    LoginInfo selectByPrimaryKey(Long infoId);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(DictType record);
+    int updateByPrimaryKeySelective(LoginInfo record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(DictType record);
-
+    int updateByPrimaryKey(LoginInfo record);
 }

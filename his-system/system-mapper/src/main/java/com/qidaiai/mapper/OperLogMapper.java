@@ -1,49 +1,48 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.DictType;
+import com.qidaiai.domain.OperLog;
 
-public interface DictTypeMapper extends BaseMapper {
+public interface OperLogMapper extends BaseMapper {
     /**
      * delete by primary key
-     * @param dictId primaryKey
+     * @param operId primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(Long dictId);
+    int deleteByPrimaryKey(Long operId);
 
     /**
      * insert record to table
      * @param record the record
      * @return insert count
      */
-    int insert(DictType record);
+    int insert(OperLog record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(DictType record);
+    int insertSelective(OperLog record);
 
     /**
      * select by primary key
-     * @param dictId primary key
+     * @param operId primary key
      * @return object by primary key
      */
-    DictType selectByPrimaryKey(Long dictId);
+    OperLog selectByPrimaryKey(Long operId);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(DictType record);
+    int updateByPrimaryKeySelective(OperLog record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(DictType record);
-
+    int updateByPrimaryKey(OperLog record);
 }

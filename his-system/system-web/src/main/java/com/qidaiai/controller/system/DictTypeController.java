@@ -1,6 +1,8 @@
 package com.qidaiai.controller.system;
 
 
+import com.qidaiai.aspectj.annotation.Log;
+import com.qidaiai.aspectj.enums.BusinessType;
 import com.qidaiai.dto.DictTypeDto;
 import com.qidaiai.hiscommons.vo.AjaxResult;
 import com.qidaiai.hiscommons.vo.DataGridView;
@@ -37,6 +39,7 @@ public class DictTypeController {
      * 添加
      */
     @PostMapping("addDictType")
+    @Log(title = "添加字典类型",businessType = BusinessType.UPDATE)
     public AjaxResult addDictType(@Validated DictTypeDto dictTypeDto) {
         if (dictTypeService.checkDictTypeUnique(dictTypeDto.getDictId(), dictTypeDto.getDictType())) {
             return AjaxResult.fail("新增字典【" + dictTypeDto.getDictName() + "】失败，字典类型已存在");
@@ -49,6 +52,7 @@ public class DictTypeController {
      * 修改
      */
     @PutMapping("updateDictType")
+    @Log(title = "修改字典类型",businessType = BusinessType.UPDATE)
     public AjaxResult updateDictType(@Validated DictTypeDto dictTypeDto) {
         if (dictTypeService.checkDictTypeUnique(dictTypeDto.getDictId(), dictTypeDto.getDictType())) {
             return AjaxResult.fail("修改字典【" + dictTypeDto.getDictName() + "】失败，字典类型已存在");
@@ -70,6 +74,7 @@ public class DictTypeController {
      * 删除
      */
     @DeleteMapping("deleteDictTypeByIds/{dictIds}")
+    @Log(title = "删除字典类型",businessType = BusinessType.DELETE)
     public AjaxResult updateDictType(@PathVariable @Validated @NotEmpty(message = "要删除的ID不能为空") Long[] dictIds) {
         return AjaxResult.toAjax(this.dictTypeService.deleteDictTypeByIds(dictIds));
     }
@@ -80,6 +85,22 @@ public class DictTypeController {
     @GetMapping("selectAllDictType")
     public AjaxResult selectAllDictType(){
         return AjaxResult.success(this.dictTypeService.list().getData());
+    }
+
+
+    /**
+     * 同步缓存
+     */
+    @GetMapping("dictCacheAsync")
+    @Log(title = "同步字典数据到redis",businessType = BusinessType.OTHER)
+    public AjaxResult dictCacheAsync(){
+        try {
+            this.dictTypeService.dictCacheAsync();
+            return AjaxResult.success();
+        }catch (Exception e){
+            System.out.println(e);
+            return AjaxResult.error();
+        }
     }
 
 }

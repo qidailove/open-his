@@ -1,8 +1,11 @@
 package com.qidaiai.service;
 
+import com.qidaiai.domain.DictData;
 import com.qidaiai.domain.DictType;
 import com.qidaiai.dto.DictTypeDto;
 import com.qidaiai.hiscommons.vo.DataGridView;
+
+import java.util.List;
 
 public interface DictTypeService{
 
@@ -52,5 +55,12 @@ public interface DictTypeService{
      * @return
      */
     DictType selectDictTypeById(Long dictId);
+
+    /**
+     * 同步缓存
+     */
+    void dictCacheAsync();
+
+    List<DictData> selectDictDataByDictType(String dictType);
 
 }
