@@ -183,7 +183,7 @@
   <delete id="deleteBatchIds">
     delete from sys_dept where dept_id in
     <foreach collection="coll" item="dept_id" index="index" open="(" close=")" separator=",">
-      ${dept_id}
+      #{dept_id}
     </foreach>
   </delete>
 </mapper>

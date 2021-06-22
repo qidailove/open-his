@@ -30,7 +30,7 @@ public interface DictTypeMapper extends BaseMapper {
      * @param dictId primary key
      * @return object by primary key
      */
-    DictType selectByPrimaryKey(Long dictId);
+    DictType selectById(Long dictId);
 
     /**
      * update record selective
