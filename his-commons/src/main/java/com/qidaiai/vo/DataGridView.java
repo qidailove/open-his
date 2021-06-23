@@ -1,6 +1,6 @@
-package com.qidaiai.hiscommons.vo;
+package com.qidaiai.vo;
 
-import com.qidaiai.hiscommons.dto.BaseDto;
+import com.qidaiai.dto.BaseDto;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

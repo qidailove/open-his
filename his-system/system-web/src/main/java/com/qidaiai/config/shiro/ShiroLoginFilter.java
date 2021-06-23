@@ -1,13 +1,12 @@
 package com.qidaiai.config.shiro;
 
 import com.alibaba.fastjson.JSON;
-import com.qidaiai.hiscommons.constants.HttpStatus;
-import com.qidaiai.hiscommons.vo.AjaxResult;
+import com.qidaiai.constants.HttpStatus;
+import com.qidaiai.vo.AjaxResult;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ShiroLoginFilter extends FormAuthenticationFilter {

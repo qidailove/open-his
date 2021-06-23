@@ -1,7 +1,6 @@
-package com.qidaiai.hiscommons.vo;
+package com.qidaiai.vo;
 
-import com.qidaiai.hiscommons.constants.HttpStatus;
-import com.sun.org.apache.bcel.internal.classfile.Code;
+import com.qidaiai.constants.HttpStatus;
 
 import java.util.HashMap;
 

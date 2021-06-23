@@ -2,7 +2,7 @@ package com.qidaiai.service;
 
 import com.qidaiai.domain.LoginInfo;
 import com.qidaiai.dto.LoginInfoDto;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.DataGridView;
 
 public interface LoginInfoService{
 

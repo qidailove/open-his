@@ -1,7 +1,6 @@
 package com.qidaiai.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.qidaiai.hiscommons.domain.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;

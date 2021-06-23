@@ -1,4 +1,7 @@
 
+server:
+  port: 8081
+
 #spring的配置
 spring:
   #数据源配置
@@ -43,7 +46,7 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:mapper/*/*Mapper.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
   global-config:
 
     #数据库主键id自增
@@ -56,10 +59,11 @@ dubbo:
     name: his-erp-service
   registry:
     address: zookeeper://47.107.49.181:2181
+    protocol: zookeeper
   protocol:
-    port: -1
+    port: 28080
     name: dubbo
   scan:
     base-packages: com.qidaiai.service.impl
-
-
+  config-center:
+    timeout: 10000

@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.vo;
+package com.qidaiai.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

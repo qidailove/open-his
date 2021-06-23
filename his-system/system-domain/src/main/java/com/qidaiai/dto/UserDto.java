@@ -1,6 +1,5 @@
 package com.qidaiai.dto;
 
-import com.qidaiai.hiscommons.dto.BaseDto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

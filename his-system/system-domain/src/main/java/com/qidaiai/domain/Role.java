@@ -1,14 +1,12 @@
 package com.qidaiai.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.qidaiai.hiscommons.domain.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
     * 角色信息表

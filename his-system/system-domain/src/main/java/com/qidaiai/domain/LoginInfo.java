@@ -1,7 +1,5 @@
 package com.qidaiai.domain;
 
-import com.qidaiai.hiscommons.domain.BaseEntity;
-import com.qidaiai.hiscommons.dto.BaseDto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;

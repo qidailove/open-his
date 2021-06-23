@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.utils;
+package com.qidaiai.utils;
 
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.net.NetUtil;

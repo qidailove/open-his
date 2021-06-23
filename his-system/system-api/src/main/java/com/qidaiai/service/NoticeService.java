@@ -1,7 +1,7 @@
 package com.qidaiai.service;
 
 import com.qidaiai.dto.NoticeDto;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.DataGridView;
 
 /**
  * 公告管理接口

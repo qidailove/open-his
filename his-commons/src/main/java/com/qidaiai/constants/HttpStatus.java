@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.constants;
+package com.qidaiai.constants;
 
 /**
  * 响应状态码常量

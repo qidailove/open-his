@@ -1,8 +1,8 @@
 package com.qidaiai.utils;
 
 import com.qidaiai.domain.User;
-import com.qidaiai.hiscommons.constants.Constants;
-import com.qidaiai.hiscommons.domain.SimpleUser;
+import com.qidaiai.constants.Constants;
+import com.qidaiai.domain.SimpleUser;
 import com.qidaiai.vo.ActiverUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;

@@ -2,7 +2,7 @@ package com.qidaiai.service;
 
 import com.qidaiai.domain.CheckItem;
 import com.qidaiai.dto.CheckItemDto;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.DataGridView;
 
 import java.util.List;
 

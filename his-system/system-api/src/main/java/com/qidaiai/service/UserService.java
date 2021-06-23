@@ -2,7 +2,7 @@ package com.qidaiai.service;
 
 import com.qidaiai.domain.User;
 import com.qidaiai.dto.UserDto;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.DataGridView;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.domain;
+package com.qidaiai.domain;
 
 import java.io.Serializable;
 

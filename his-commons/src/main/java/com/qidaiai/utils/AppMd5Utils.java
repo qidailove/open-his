@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.utils;
+package com.qidaiai.utils;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
 

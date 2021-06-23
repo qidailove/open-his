@@ -2,8 +2,8 @@ package com.qidaiai.controller.system;
 
 import com.qidaiai.domain.Menu;
 import com.qidaiai.dto.MenuDto;
-import com.qidaiai.hiscommons.constants.Constants;
-import com.qidaiai.hiscommons.vo.AjaxResult;
+import com.qidaiai.constants.Constants;
+import com.qidaiai.vo.AjaxResult;
 import com.qidaiai.service.MenuService;
 import com.qidaiai.utils.ShiroSecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

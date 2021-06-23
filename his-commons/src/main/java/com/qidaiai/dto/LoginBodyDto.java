@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.dto;
+package com.qidaiai.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

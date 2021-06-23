@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.ProducterMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.Producter">
+    <!--@mbg.generated-->
+    <!--@Table stock_producter-->
+    <id column="producter_id" jdbcType="BIGINT" property="producterId" />
+    <result column="producter_name" jdbcType="VARCHAR" property="producterName" />
+    <result column="producter_code" jdbcType="VARCHAR" property="producterCode" />
+    <result column="producter_address" jdbcType="VARCHAR" property="producterAddress" />
+    <result column="producter_tel" jdbcType="VARCHAR" property="producterTel" />
+    <result column="producter_person" jdbcType="VARCHAR" property="producterPerson" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    producter_id, producter_name, producter_code, producter_address, producter_tel, producter_person, 
+    keywords, `status`, create_time, update_time, create_by, update_by
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from stock_producter
+    where producter_id = #{producterId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from stock_producter
+    where producter_id = #{producterId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="producter_id" keyProperty="producterId" parameterType="com.qidaiai.domain.Producter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into stock_producter (producter_name, producter_code, producter_address, 
+      producter_tel, producter_person, keywords, 
+      `status`, create_time, update_time, 
+      create_by, update_by)
+    values (#{producterName,jdbcType=VARCHAR}, #{producterCode,jdbcType=VARCHAR}, #{producterAddress,jdbcType=VARCHAR}, 
+      #{producterTel,jdbcType=VARCHAR}, #{producterPerson,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="producter_id" keyProperty="producterId" parameterType="com.qidaiai.domain.Producter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into stock_producter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="producterName != null">
+        producter_name,
+      </if>
+      <if test="producterCode != null">
+        producter_code,
+      </if>
+      <if test="producterAddress != null">
+        producter_address,
+      </if>
+      <if test="producterTel != null">
+        producter_tel,
+      </if>
+      <if test="producterPerson != null">
+        producter_person,
+      </if>
+      <if test="keywords != null">
+        keywords,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="producterName != null">
+        #{producterName,jdbcType=VARCHAR},
+      </if>
+      <if test="producterCode != null">
+        #{producterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="producterAddress != null">
+        #{producterAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="producterTel != null">
+        #{producterTel,jdbcType=VARCHAR},
+      </if>
+      <if test="producterPerson != null">
+        #{producterPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.Producter">
+    <!--@mbg.generated-->
+    update stock_producter
+    <set>
+      <if test="producterName != null">
+        producter_name = #{producterName,jdbcType=VARCHAR},
+      </if>
+      <if test="producterCode != null">
+        producter_code = #{producterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="producterAddress != null">
+        producter_address = #{producterAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="producterTel != null">
+        producter_tel = #{producterTel,jdbcType=VARCHAR},
+      </if>
+      <if test="producterPerson != null">
+        producter_person = #{producterPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where producter_id = #{producterId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Producter">
+    <!--@mbg.generated-->
+    update stock_producter
+    set producter_name = #{producterName,jdbcType=VARCHAR},
+      producter_code = #{producterCode,jdbcType=VARCHAR},
+      producter_address = #{producterAddress,jdbcType=VARCHAR},
+      producter_tel = #{producterTel,jdbcType=VARCHAR},
+      producter_person = #{producterPerson,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where producter_id = #{producterId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from stock_producter ${ew.customSqlSegment}
+  </select>
+
+
+  <delete id="deleteBatchIds">
+    delete from stock_producter where producter_id in
+    <foreach collection="coll" item="producter_id" index="index" open="(" close=")" separator=",">
+      #{producter_id}
+    </foreach>
+  </delete>
+</mapper>

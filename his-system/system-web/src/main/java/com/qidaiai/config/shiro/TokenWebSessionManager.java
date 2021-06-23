@@ -1,7 +1,7 @@
 package com.qidaiai.config.shiro;
 
 
-import com.qidaiai.hiscommons.constants.Constants;
+import com.qidaiai.constants.Constants;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.util.StringUtils;

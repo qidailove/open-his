@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.utils;
+package com.qidaiai.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.utils;
+package com.qidaiai.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;

@@ -1,8 +1,8 @@
 package com.qidaiai.controller.system;
 
 import com.qidaiai.dto.OperLogDto;
-import com.qidaiai.hiscommons.vo.AjaxResult;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.AjaxResult;
+import com.qidaiai.vo.DataGridView;
 import com.qidaiai.service.OperLogService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

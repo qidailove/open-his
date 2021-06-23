@@ -2,8 +2,8 @@ package com.qidaiai.controller.system;
 
 import com.qidaiai.domain.Role;
 import com.qidaiai.dto.RoleDto;
-import com.qidaiai.hiscommons.vo.AjaxResult;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.AjaxResult;
+import com.qidaiai.vo.DataGridView;
 import com.qidaiai.service.RoleService;
 import com.qidaiai.utils.ShiroSecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

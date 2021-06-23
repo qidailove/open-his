@@ -3,7 +3,7 @@ package com.qidaiai.service;
 import com.qidaiai.domain.DictData;
 import com.qidaiai.domain.DictType;
 import com.qidaiai.dto.DictTypeDto;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.DataGridView;
 
 import java.util.List;
 

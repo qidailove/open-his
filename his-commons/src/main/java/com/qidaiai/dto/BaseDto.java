@@ -1,6 +1,6 @@
-package com.qidaiai.hiscommons.dto;
+package com.qidaiai.dto;
 
-import com.qidaiai.hiscommons.domain.SimpleUser;
+import com.qidaiai.domain.SimpleUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

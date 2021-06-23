@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.utils;
+package com.qidaiai.utils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;

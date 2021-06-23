@@ -2,7 +2,7 @@ package com.qidaiai.service;
 
 import com.qidaiai.domain.Menu;
 import com.qidaiai.dto.MenuDto;
-import com.qidaiai.hiscommons.domain.SimpleUser;
+import com.qidaiai.domain.SimpleUser;
 
 import java.util.List;
 

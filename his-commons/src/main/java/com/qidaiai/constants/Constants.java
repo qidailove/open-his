@@ -1,4 +1,4 @@
-package com.qidaiai.hiscommons.constants;
+package com.qidaiai.constants;
 
 /**
  * 系统使用常量

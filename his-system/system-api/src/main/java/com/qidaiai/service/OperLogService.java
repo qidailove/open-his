@@ -2,7 +2,7 @@ package com.qidaiai.service;
 
 import com.qidaiai.domain.OperLog;
 import com.qidaiai.dto.OperLogDto;
-import com.qidaiai.hiscommons.vo.DataGridView;
+import com.qidaiai.vo.DataGridView;
 
 /**
  * @author qidaiai

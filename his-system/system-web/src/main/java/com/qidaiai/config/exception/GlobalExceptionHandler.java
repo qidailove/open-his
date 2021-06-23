@@ -1,6 +1,6 @@
 package com.qidaiai.config.exception;
 
-import com.qidaiai.hiscommons.vo.AjaxResult;
+import com.qidaiai.vo.AjaxResult;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
