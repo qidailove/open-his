@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
- * 用户权限菜单管理接口
+ * 用户权限菜单管理控制器
  * @author qidaiai
  * @date 2021/06/23
  */

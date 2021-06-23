@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 操作日志接口
+ * 操作日志控制器
  * @author qidaiai
  * @date 2021/06/22
  */

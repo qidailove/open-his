@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -62,12 +63,14 @@ public class RoleDto extends BaseDto {
      * 创建时间
      */
     @ApiModelProperty(value="创建时间")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @ApiModelProperty(value="更新时间")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateTime;
 
     /**

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 角色操作接口
+ * 角色管理控制器
  * @author qidaiai
  * @date 2021/06/22
  */

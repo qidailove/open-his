@@ -16,7 +16,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
- * 数据字典信息
+ * 数据字典信息控制器
  * @author qidaiai
  * @date 2021/06/21
  */

@@ -223,7 +223,6 @@
     </foreach>
   </delete>
 
-
   <delete id="deleteAll">
     delete from sys_oper_log
   </delete>

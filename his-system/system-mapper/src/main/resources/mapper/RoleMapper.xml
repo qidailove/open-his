@@ -139,7 +139,7 @@
     </set>
     where role_id = #{roleId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Role">
+  <update id="updateById" parameterType="com.qidaiai.domain.Role">
     <!--@mbg.generated-->
     update sys_role
     set role_name = #{roleName,jdbcType=VARCHAR},
@@ -206,4 +206,11 @@
   <insert id="saveRoleUser">
     insert into sys_role_user(user_id, role_id) values (#{userId}, #{roleId})
   </insert>
+
+  <delete id="deleteBatchIds">
+    delete from sys_role where role_id in
+    <foreach collection="coll" index="index" item="role_id" open="(" close=")" separator=",">
+      #{role_id}
+    </foreach>
+  </delete>
 </mapper>

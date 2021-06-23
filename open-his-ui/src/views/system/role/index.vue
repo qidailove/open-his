@@ -385,6 +385,7 @@ export default {
       console.log(finalKey)
       saveRoleMenu(this.currentRoleId, finalKey).then(res => {
         this.msgSuccess('分配成功')
+        this.open = false
       }).catch(() => {
         this.msgSuccess('分配失败')
       })

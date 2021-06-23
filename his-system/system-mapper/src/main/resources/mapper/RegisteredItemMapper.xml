@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.RegisteredItemMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.RegisteredItem">
+    <!--@mbg.generated-->
+    <!--@Table sys_registered_item-->
+    <id column="reg_item_id" jdbcType="BIGINT" property="regItemId" />
+    <result column="reg_item_name" jdbcType="VARCHAR" property="regItemName" />
+    <result column="reg_item_fee" jdbcType="DECIMAL" property="regItemFee" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="status" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    reg_item_id, reg_item_name, reg_item_fee, create_time, update_time, create_by, update_by, 
+    `status`
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_registered_item
+    where reg_item_id = #{regItemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sys_registered_item
+    where reg_item_id = #{regItemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="reg_item_id" keyProperty="regItemId" parameterType="com.qidaiai.domain.RegisteredItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_registered_item (reg_item_name, reg_item_fee, create_time, 
+      update_time, create_by, update_by, 
+      `status`)
+    values (#{regItemName,jdbcType=VARCHAR}, #{regItemFee,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="reg_item_id" keyProperty="regItemId" parameterType="com.qidaiai.domain.RegisteredItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_registered_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regItemName != null">
+        reg_item_name,
+      </if>
+      <if test="regItemFee != null">
+        reg_item_fee,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regItemName != null">
+        #{regItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="regItemFee != null">
+        #{regItemFee,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.RegisteredItem">
+    <!--@mbg.generated-->
+    update sys_registered_item
+    <set>
+      <if test="regItemName != null">
+        reg_item_name = #{regItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="regItemFee != null">
+        reg_item_fee = #{regItemFee,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where reg_item_id = #{regItemId,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateById" parameterType="com.qidaiai.domain.RegisteredItem">
+    <!--@mbg.generated-->
+    update sys_registered_item
+    set reg_item_name = #{regItemName,jdbcType=VARCHAR},
+      reg_item_fee = #{regItemFee,jdbcType=DECIMAL},
+        <if test="createTime != null">
+          create_time = #{createTime,jdbcType=TIMESTAMP},
+        </if>
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=CHAR}
+    where reg_item_id = #{regItemId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from sys_registered_item ${ew.customSqlSegment}
+  </select>
+
+  <delete id="deleteBatchIds">
+    delete from sys_registered_item where reg_item_id in
+    <foreach collection="coll" item="reg_item_id" open="(" close=")" separator=",">
+      #{reg_item_id}
+    </foreach>
+  </delete>
+
+</mapper>

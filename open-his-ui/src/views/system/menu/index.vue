@@ -231,8 +231,8 @@ export default {
       this.getTreeselect()
       getMenuById(row.menuId).then(res => {
         this.form = res.data
-        this.reset()
         this.open = true
+        this.reset()
         this.title = '修改菜单权限'
       })
     },

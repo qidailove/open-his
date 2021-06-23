@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.CheckItemMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.CheckItem">
+    <!--@mbg.generated-->
+    <!--@Table sys_check_item-->
+    <id column="check_item_id" jdbcType="BIGINT" property="checkItemId" />
+    <result column="check_item_name" jdbcType="VARCHAR" property="checkItemName" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+    <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
+    <result column="cost" jdbcType="DECIMAL" property="cost" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="type_id" jdbcType="CHAR" property="typeId" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    check_item_id, check_item_name, keywords, unit_price, cost, unit, type_id, `status`, 
+    create_time, update_time, create_by, update_by
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_check_item
+    where check_item_id = #{checkItemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sys_check_item
+    where check_item_id = #{checkItemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="check_item_id" keyProperty="checkItemId" parameterType="com.qidaiai.domain.CheckItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_check_item (check_item_name, keywords, unit_price, 
+      cost, unit, type_id, `status`, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{checkItemName,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, 
+      #{cost,jdbcType=DECIMAL}, #{unit,jdbcType=VARCHAR}, #{typeId,jdbcType=CHAR}, #{status,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="check_item_id" keyProperty="checkItemId" parameterType="com.qidaiai.domain.CheckItem" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_check_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkItemName != null">
+        check_item_name,
+      </if>
+      <if test="keywords != null">
+        keywords,
+      </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkItemName != null">
+        #{checkItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.qidaiai.domain.CheckItem">
+    <!--@mbg.generated-->
+    update sys_check_item
+    <set>
+      <if test="checkItemName != null">
+        check_item_name = #{checkItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where check_item_id = #{checkItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CheckItem">
+    <!--@mbg.generated-->
+    update sys_check_item
+    set check_item_name = #{checkItemName,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      cost = #{cost,jdbcType=DECIMAL},
+      unit = #{unit,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=CHAR},
+      `status` = #{status,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where check_item_id = #{checkItemId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from sys_check_item ${ew.customSqlSegment}
+  </select>
+
+  <delete id="deleteBatchIds">
+    delete from sys_check_item where check_item_id in
+    <foreach collection="coll" item="check_item_id" index="index" open="(" close=")" separator=",">
+      #{check_item_id}
+    </foreach>
+  </delete>
+</mapper>

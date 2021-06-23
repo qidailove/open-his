@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 登录用户记录接口
+ * 登录用户记录控制器
  * @author qidaiai
  * @date 2021/06/22
  */

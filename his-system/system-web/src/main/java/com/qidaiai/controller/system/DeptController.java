@@ -18,7 +18,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
- * 部门科室管理接口
+ * 部门科室管理控制器
  * @author qidaiai
  * @date 2021/06/22
  */

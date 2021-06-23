@@ -34,6 +34,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 登录控制器
+ * @author qidaiai
+ * @date 2021/06/18
+ */
 @RestController
 @Log4j2
 public class LoginController {

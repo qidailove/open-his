@@ -44,10 +44,10 @@ public interface RoleMapper extends BaseMapper {
 
     /**
      * update record
-     * @param record the updated record
+     * @param role the updated record
      * @return update count
      */
-    int updateByPrimaryKey(Role record);
+    int updateById(Role role);
 
     /**
      * 根据角色IDS删除sys_role_menu中间表的数据
@@ -97,4 +97,5 @@ public interface RoleMapper extends BaseMapper {
      * @param roleId
      */
     void saveRoleUser(@Param("userId") Long userId, @Param("roleId") Long roleId);
+
 }

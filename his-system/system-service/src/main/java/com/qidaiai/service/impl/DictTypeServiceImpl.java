@@ -21,9 +21,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
-/**
- * @Author: 尚学堂 雷哥
- */
+
 @Service
 public class DictTypeServiceImpl  implements DictTypeService {
 
