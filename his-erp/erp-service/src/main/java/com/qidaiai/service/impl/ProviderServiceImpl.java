@@ -61,6 +61,8 @@ public class ProviderServiceImpl implements ProviderService{
         Provider provider=new Provider();
         BeanUtil.copyProperties(providerDto,provider);
         provider.setUpdateBy(providerDto.getSimpleUser().getUserName());
+        Provider info = this.providerMapper.selectById(provider.getProviderId());
+        provider.setCreateTime(info.getCreateTime());
         provider.setUpdateTime(DateUtil.date());
         return this.providerMapper.updateById(provider);
     }

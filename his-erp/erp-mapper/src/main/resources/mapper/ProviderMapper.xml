@@ -159,7 +159,7 @@
     </set>
     where provider_id = #{providerId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Provider">
+  <update id="updateById" parameterType="com.qidaiai.domain.Provider">
     <!--@mbg.generated-->
     update stock_provider
     set provider_name = #{providerName,jdbcType=VARCHAR},

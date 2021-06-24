@@ -44,5 +44,5 @@ public interface ProviderMapper extends BaseMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(Provider record);
+    int updateById(Provider record);
 }
