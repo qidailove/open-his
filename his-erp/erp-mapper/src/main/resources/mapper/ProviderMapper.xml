@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.ProviderMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.Provider">
+    <!--@mbg.generated-->
+    <!--@Table stock_provider-->
+    <id column="provider_id" jdbcType="BIGINT" property="providerId" />
+    <result column="provider_name" jdbcType="VARCHAR" property="providerName" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_mobile" jdbcType="VARCHAR" property="contactMobile" />
+    <result column="contact_tel" jdbcType="VARCHAR" property="contactTel" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="provider_address" jdbcType="VARCHAR" property="providerAddress" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    provider_id, provider_name, contact_name, contact_mobile, contact_tel, bank_account, 
+    provider_address, `status`, create_time, update_time, create_by, update_by
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from stock_provider
+    where provider_id = #{providerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from stock_provider
+    where provider_id = #{providerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="provider_id" keyProperty="providerId" parameterType="com.qidaiai.domain.Provider" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into stock_provider (provider_name, contact_name, contact_mobile, 
+      contact_tel, bank_account, provider_address, 
+      `status`, create_time, update_time, 
+      create_by, update_by)
+    values (#{providerName,jdbcType=VARCHAR}, #{contactName,jdbcType=VARCHAR}, #{contactMobile,jdbcType=VARCHAR}, 
+      #{contactTel,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{providerAddress,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="provider_id" keyProperty="providerId" parameterType="com.qidaiai.domain.Provider" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into stock_provider
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="providerName != null">
+        provider_name,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactMobile != null">
+        contact_mobile,
+      </if>
+      <if test="contactTel != null">
+        contact_tel,
+      </if>
+      <if test="bankAccount != null">
+        bank_account,
+      </if>
+      <if test="providerAddress != null">
+        provider_address,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="providerName != null">
+        #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null">
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactTel != null">
+        #{contactTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="providerAddress != null">
+        #{providerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.Provider">
+    <!--@mbg.generated-->
+    update stock_provider
+    <set>
+      <if test="providerName != null">
+        provider_name = #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null">
+        contact_mobile = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactTel != null">
+        contact_tel = #{contactTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="providerAddress != null">
+        provider_address = #{providerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where provider_id = #{providerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Provider">
+    <!--@mbg.generated-->
+    update stock_provider
+    set provider_name = #{providerName,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_mobile = #{contactMobile,jdbcType=VARCHAR},
+      contact_tel = #{contactTel,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      provider_address = #{providerAddress,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where provider_id = #{providerId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from stock_provider ${ew.customSqlSegment}
+  </select>
+
+  <delete id="deleteBatchIds">
+    delete from stock_provider where provider_id in
+    <foreach collection="coll" item="provider_id" index="index" open="(" close=")" separator=",">
+      #{provider_id}
+    </foreach>
+  </delete>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from stock_provider ${ew.customSqlSegment}
+  </select>
+</mapper>

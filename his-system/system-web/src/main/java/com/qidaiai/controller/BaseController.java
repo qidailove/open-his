@@ -10,6 +10,6 @@ public class BaseController {
      * @return
      */
     public AjaxResult fallback(){
-        return AjaxResult.toAjax(-1);
+        return AjaxResult.fail("服务器内部异常，请联系管理员");
     }
 }
