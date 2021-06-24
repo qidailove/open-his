@@ -1,7 +1,9 @@
 package com.qidaiai.controller.erp;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.qidaiai.aspectj.annotation.Log;
 import com.qidaiai.aspectj.enums.BusinessType;
+import com.qidaiai.controller.BaseController;
 import com.qidaiai.dto.ProducterDto;
 import com.qidaiai.vo.AjaxResult;
 import com.qidaiai.vo.DataGridView;
@@ -21,7 +23,7 @@ import javax.validation.constraints.NotNull;
  */
 @RestController
 @RequestMapping("erp/producter")
-public class ProducterController {
+public class ProducterController extends BaseController {
 
     /**
      * @Reference  主要是dubbo中应用于注入远程服务对象的注解
@@ -33,6 +35,7 @@ public class ProducterController {
      * 分页查询
      */
     @GetMapping("listProducterForPage")
+    @HystrixCommand
     public AjaxResult listProducterForPage(ProducterDto producterDto){
         DataGridView gridView = this.producterService.listProducterPage(producterDto);
         return AjaxResult.success("查询成功",gridView.getData(),gridView.getTotal());
@@ -41,6 +44,7 @@ public class ProducterController {
      * 添加
      */
     @PostMapping("addProducter")
+    @HystrixCommand
     @Log(title = "添加生产厂家",businessType = BusinessType.INSERT)
     public AjaxResult addProducter(@Validated ProducterDto producterDto) {
         producterDto.setSimpleUser(ShiroSecurityUtils.getCurrentSimpleUser());
@@ -51,6 +55,7 @@ public class ProducterController {
      * 修改
      */
     @PutMapping("updateProducter")
+    @HystrixCommand
     @Log(title = "修改生产厂家",businessType = BusinessType.UPDATE)
     public AjaxResult updateProducter(@Validated ProducterDto producterDto) {
         producterDto.setSimpleUser(ShiroSecurityUtils.getCurrentSimpleUser());
@@ -62,6 +67,7 @@ public class ProducterController {
      * 根据ID查询一个生产厂家信息
      */
     @GetMapping("getProducterById/{producterId}")
+    @HystrixCommand
     public AjaxResult getProducterById(@PathVariable @Validated @NotNull(message = "生产厂家ID不能为空") Long producterId) {
         return AjaxResult.success(this.producterService.getOne(producterId));
     }
@@ -70,6 +76,7 @@ public class ProducterController {
      * 删除
      */
     @DeleteMapping("deleteProducterByIds/{producterIds}")
+    @HystrixCommand
     @Log(title = "删除生产厂家",businessType = BusinessType.DELETE)
     public AjaxResult deleteProducterByIds(@PathVariable @Validated @NotEmpty(message = "要删除的ID不能为空") Long[] producterIds) {
         return AjaxResult.toAjax(this.producterService.deleteProducterByIds(producterIds));
@@ -79,6 +86,7 @@ public class ProducterController {
      * 查询所有可用的生产厂家
      */
     @GetMapping("selectAllProducter")
+    @HystrixCommand
     public AjaxResult selectAllProducter() {
         return AjaxResult.success(this.producterService.selectAllProducter());
     }

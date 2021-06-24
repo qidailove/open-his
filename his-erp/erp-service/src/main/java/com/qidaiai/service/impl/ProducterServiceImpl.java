@@ -8,6 +8,7 @@ import com.qidaiai.constants.Constants;
 import com.qidaiai.dto.ProducterDto;
 import com.qidaiai.vo.DataGridView;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.qidaiai.mapper.ProducterMapper;
@@ -16,7 +17,7 @@ import com.qidaiai.domain.Producter;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
+@Service(methods = {@Method(name = "addProducter",retries = 0)})
 public class ProducterServiceImpl implements ProducterService {
 
     @Autowired
