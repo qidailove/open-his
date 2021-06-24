@@ -40,7 +40,15 @@
     del_flag, scheduling_flag
   </sql>
 
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from sys_user ${ew.customSqlSegment}
+  </select>
+
   <select id="selectOne" resultMap="BaseResultMap">
+    select * from sys_user ${ew.customSqlSegment}
+  </select>
+
+  <select id="selectList">
     select * from sys_user ${ew.customSqlSegment}
   </select>
 

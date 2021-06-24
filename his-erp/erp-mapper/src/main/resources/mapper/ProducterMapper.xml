@@ -183,7 +183,7 @@
 
   <delete id="deleteBatchIds">
     delete from stock_producter where producter_id in
-    <foreach collection="coll" item="producter_id" index="index" open="(" close=")" separator=",">
+    <foreach close=")" collection="coll" index="index" item="producter_id" open="(" separator=",">
       #{producter_id}
     </foreach>
   </delete>

@@ -186,4 +186,8 @@
       #{dept_id}
     </foreach>
   </delete>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from sys_dept ${ew.customSqlSegment}
+  </select>
 </mapper>

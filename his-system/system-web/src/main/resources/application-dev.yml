@@ -110,7 +110,7 @@ dubbo:
     address: zookeeper://47.107.49.181:2181
     protocol: zookeeper
   protocol:
-    port: 28080
+    port: -1
     name: dubbo
   consumer:
     check: false

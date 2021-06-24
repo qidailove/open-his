@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 
-@ApiModel(value = "com-qidaiai-domain-ProducterDto")
+@ApiModel(value = "com-qidaiai-dto-ProducterDto")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
