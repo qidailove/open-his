@@ -27,6 +27,7 @@ public class ProducterServiceImpl implements ProducterService {
     public DataGridView listProducterPage(ProducterDto producterDto) {
         Page<Producter> page=new Page<>(producterDto.getPageNum(),producterDto.getPageSize());
         QueryWrapper<Producter> qw=new QueryWrapper<>();
+        //此处的模糊查询是左右都会
         qw.like(StringUtils.isNotBlank(producterDto.getProducterName()),Producter.COL_PRODUCTER_NAME,producterDto.getProducterName());
         qw.like(StringUtils.isNotBlank(producterDto.getKeywords()),Producter.COL_KEYWORDS,producterDto.getKeywords());
         qw.eq(StringUtils.isNotBlank(producterDto.getProducterTel()),Producter.COL_PRODUCTER_TEL,producterDto.getProducterTel());

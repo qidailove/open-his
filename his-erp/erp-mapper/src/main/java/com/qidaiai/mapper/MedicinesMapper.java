@@ -1,48 +1,48 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.Producter;
+import com.qidaiai.domain.Medicines;
 
-public interface ProducterMapper extends BaseMapper {
+public interface MedicinesMapper extends BaseMapper {
     /**
      * delete by primary key
-     * @param producterId primaryKey
+     * @param medicinesId primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(Long producterId);
+    int deleteByPrimaryKey(Long medicinesId);
 
     /**
      * insert record to table
      * @param record the record
      * @return insert count
      */
-    int insert(Producter record);
+    int insert(Medicines record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(Producter record);
+    int insertSelective(Medicines record);
 
     /**
      * select by primary key
-     * @param producterId primary key
+     * @param medicinesId primary key
      * @return object by primary key
      */
-    Producter selectById(Long producterId);
+    Medicines selectById(Long medicinesId);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(Producter record);
+    int updateByPrimaryKeySelective(Medicines record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateById(Producter record);
+    int updateByPrimaryKey(Medicines record);
 }
