@@ -225,4 +225,19 @@
   <select id="selectOne" resultMap="BaseResultMap">
     select * from his_patient ${ew.customSqlSegment}
   </select>
+
+  <select id="selectPageBysql" resultMap="BaseResultMap">
+    select * from his_patient
+    <where>
+      <if test="patient.name != null and patient.name != ''">
+        name = #{patient.name}
+      </if>
+      <if test="patient.idCard != null and patient.idCard != ''">
+        id_card = #{patient.idCard}
+      </if>
+      <if test="patient.phone != null and patient.phone != ''">
+        phone = #{patient.phone}
+      </if>
+    </where>
+  </select>
 </mapper>

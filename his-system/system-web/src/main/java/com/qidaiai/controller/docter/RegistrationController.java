@@ -57,7 +57,7 @@ public class RegistrationController {
      * 2.根据查询出来的部门编号集合再去查询部门
      */
     @GetMapping("listDeptForScheduling")
-//    @HystrixCommand
+    @HystrixCommand
     public AjaxResult listDeptForScheduling(@Validated RegistrationQueryDto registrationQueryDto){
         Long deptId = registrationQueryDto.getDeptId();
         String subsectionType = registrationQueryDto.getSubsectionType();

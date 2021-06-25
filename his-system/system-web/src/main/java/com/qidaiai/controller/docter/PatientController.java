@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2021/06/25
  */
 @RestController
-@RequestMapping("doctor/Patient")
+@RequestMapping("doctor/patient")
 public class PatientController extends BaseController {
 
     @Reference
@@ -30,7 +30,7 @@ public class PatientController extends BaseController {
      * 分页查询
      */
     @GetMapping("listPatientForPage")
-    @HystrixCommand
+//    @HystrixCommand
     public AjaxResult listPatientForPage(PatientDto patientDto){
         DataGridView gridView = this.patientService.listPatientForPage(patientDto);
         return AjaxResult.success("查询成功",gridView.getData(),gridView.getTotal());

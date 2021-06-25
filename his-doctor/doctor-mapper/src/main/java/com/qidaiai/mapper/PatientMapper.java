@@ -2,6 +2,10 @@ package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.Patient;
+import com.qidaiai.dto.PatientDto;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PatientMapper extends BaseMapper {
     /**
@@ -45,4 +49,6 @@ public interface PatientMapper extends BaseMapper {
      * @return update count
      */
     int updateByPrimaryKey(Patient record);
+
+    List<Patient> selectPageBysql(@Param(value = "patient") Patient patient);
 }

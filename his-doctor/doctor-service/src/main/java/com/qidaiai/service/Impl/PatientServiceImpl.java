@@ -17,6 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.qidaiai.mapper.PatientMapper;
 import com.qidaiai.domain.Patient;
 import com.qidaiai.service.PatientService;
+
+import java.util.List;
+
 @Service
 public class PatientServiceImpl implements PatientService{
 
@@ -29,11 +32,16 @@ public class PatientServiceImpl implements PatientService{
     @Override
     public DataGridView listPatientForPage(PatientDto patientDto) {
         Page<Patient> page=new Page<>(patientDto.getPageNum(),patientDto.getPageSize());
-        QueryWrapper<Patient> qw=new QueryWrapper<>();
-        qw.like(StringUtils.isNotBlank(patientDto.getName()),Patient.COL_NAME,patientDto.getName());
-        qw.like(StringUtils.isNotBlank(patientDto.getIdCard()),Patient.COL_ID_CARD,patientDto.getIdCard());
-        qw.like(StringUtils.isNotBlank(patientDto.getPhone()),Patient.COL_PHONE,patientDto.getPhone());
-        this.patientMapper.selectPage(page,qw);
+//        QueryWrapper<Patient> qw=new QueryWrapper<>();
+//        qw.like(StringUtils.isNotBlank(patientDto.getName()),Patient.COL_NAME,patientDto.getName());
+//        qw.like(StringUtils.isNotBlank(patientDto.getIdCard()),Patient.COL_ID_CARD,patientDto.getIdCard());
+//        qw.like(StringUtils.isNotBlank(patientDto.getPhone()),Patient.COL_PHONE,patientDto.getPhone());
+        Patient patient = new Patient();
+        BeanUtil.copyProperties(patientDto,patient);
+//        this.patientMapper.selectPage(page,qw);
+        //自定义sql查询
+        List<Patient> patients = this.patientMapper.selectPageBysql(patient);
+        page.setRecords(patients);
         return new DataGridView(page.getTotal(),page.getRecords());
     }
 
