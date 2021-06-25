@@ -81,4 +81,21 @@
     select * from his_scheduling ${ew.customSqlSegment}
   </select>
 
+  <select id="queryHasSchedulingDeptIds" resultType="java.lang.Long">
+    select distinct dept_id from his_scheduling t
+    <where>
+      <if test="deptId != null">
+        t.dept_id =#{deptId}
+      </if>
+      <if test="schedulingType!= null">
+        and t.scheduling_type=#{schedulingType}
+      </if>
+      <if test="schedulingDay!=null">
+        and  t.scheduling_day=#{schedulingDay}
+      </if>
+      <if test="subsectionType!=null">
+        and  t.subsection_type=#{subsectionType}
+      </if>
+    </where>
+  </select>
 </mapper>

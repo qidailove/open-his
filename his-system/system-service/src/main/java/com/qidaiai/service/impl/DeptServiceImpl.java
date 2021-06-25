@@ -78,4 +78,19 @@ public class DeptServiceImpl implements DeptService{
         return 0;
     }
 
+    @Override
+    public List<Dept> listDeptByDeptIds(List<Long> deptIds) {
+        QueryWrapper<Dept> qw=new QueryWrapper<>();
+        qw.in(Dept.COL_DEPT_ID,deptIds);
+        return this.deptMapper.selectList(qw);
+    }
+
+    @Override
+    public void updateDeptRegNumber(Long deptId, Integer regNumber) {
+        Dept dept=new Dept();
+        dept.setDeptId(deptId);
+        dept.setRegNumber(regNumber);
+        this.deptMapper.updateById(dept);
+    }
+
 }

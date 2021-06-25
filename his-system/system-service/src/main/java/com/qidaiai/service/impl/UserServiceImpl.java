@@ -91,11 +91,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        QueryWrapper<User> qw=new QueryWrapper<>();
-        qw.eq(User.COL_STATUS, Constants.STATUS_TRUE);
-        qw.eq(User.COL_USER_TYPE,Constants.USER_NORMAL);
-        qw.orderByAsc(User.COL_USER_ID);
-        return this.userMapper.selectList(qw);
+//        QueryWrapper<User> qw=new QueryWrapper<>();
+//        qw.eq(User.COL_STATUS, Constants.STATUS_TRUE);
+//        qw.eq(User.COL_USER_TYPE,Constants.USER_NORMAL);
+//        qw.orderByAsc(User.COL_USER_ID);
+
+        return this.userMapper.selectAllUser("0","1");
     }
     @Override
     public void resetPassWord(Long[] userIds) {

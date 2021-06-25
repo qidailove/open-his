@@ -10,4 +10,5 @@ public interface UserMapper extends BaseMapper {
 
     List<User> selectListForScheduling(@Param(value = "userId") Long userId, @Param(value = "deptId") Long deptId, @Param(value = "flag") Integer flag);
 
+    List<User> selectAllUser(@Param(value = "userStatus") String userStatus, @Param(value = "userType") String userType);
 }

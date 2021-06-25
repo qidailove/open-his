@@ -61,4 +61,8 @@
       and user_id = #{userId}
     </if>
   </select>
+
+  <select id="selectAllUser" resultMap="BaseResultMap">
+    select * from sys_user where status = #{userStatus} and user_type = #{userType}
+  </select>
 </mapper>

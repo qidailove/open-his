@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.RegistrationMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.Registration">
+    <!--@mbg.generated-->
+    <!--@Table his_registration-->
+    <id column="reg_id" jdbcType="VARCHAR" property="regId" />
+    <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="dept_id" jdbcType="BIGINT" property="deptId" />
+    <result column="reg_item_id" jdbcType="BIGINT" property="regItemId" />
+    <result column="reg_item_amount" jdbcType="DECIMAL" property="regItemAmount" />
+    <result column="reg_number" jdbcType="INTEGER" property="regNumber" />
+    <result column="reg_status" jdbcType="CHAR" property="regStatus" />
+    <result column="visit_date" jdbcType="VARCHAR" property="visitDate" />
+    <result column="scheduling_type" jdbcType="CHAR" property="schedulingType" />
+    <result column="subsection_type" jdbcType="CHAR" property="subsectionType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    reg_id, patient_id, patient_name, user_id, doctor_name, dept_id, reg_item_id, reg_item_amount, 
+    reg_number, reg_status, visit_date, scheduling_type, subsection_type, create_time, 
+    update_time, create_by
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from his_registration
+    where reg_id = #{regId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from his_registration
+    where reg_id = #{regId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.Registration">
+    <!--@mbg.generated-->
+    insert into his_registration (reg_id, patient_id, patient_name, 
+      user_id, doctor_name, dept_id, 
+      reg_item_id, reg_item_amount, reg_number, 
+      reg_status, visit_date, scheduling_type, 
+      subsection_type, create_time, update_time, 
+      create_by)
+    values (#{regId,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT}, #{doctorName,jdbcType=VARCHAR}, #{deptId,jdbcType=BIGINT}, 
+      #{regItemId,jdbcType=BIGINT}, #{regItemAmount,jdbcType=DECIMAL}, #{regNumber,jdbcType=INTEGER}, 
+      #{regStatus,jdbcType=CHAR}, #{visitDate,jdbcType=VARCHAR}, #{schedulingType,jdbcType=CHAR}, 
+      #{subsectionType,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.Registration">
+    <!--@mbg.generated-->
+    insert into his_registration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regId != null">
+        reg_id,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="doctorName != null">
+        doctor_name,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="regItemId != null">
+        reg_item_id,
+      </if>
+      <if test="regItemAmount != null">
+        reg_item_amount,
+      </if>
+      <if test="regNumber != null">
+        reg_number,
+      </if>
+      <if test="regStatus != null">
+        reg_status,
+      </if>
+      <if test="visitDate != null">
+        visit_date,
+      </if>
+      <if test="schedulingType != null">
+        scheduling_type,
+      </if>
+      <if test="subsectionType != null">
+        subsection_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regId != null">
+        #{regId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="doctorName != null">
+        #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="regItemId != null">
+        #{regItemId,jdbcType=BIGINT},
+      </if>
+      <if test="regItemAmount != null">
+        #{regItemAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="regNumber != null">
+        #{regNumber,jdbcType=INTEGER},
+      </if>
+      <if test="regStatus != null">
+        #{regStatus,jdbcType=CHAR},
+      </if>
+      <if test="visitDate != null">
+        #{visitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="schedulingType != null">
+        #{schedulingType,jdbcType=CHAR},
+      </if>
+      <if test="subsectionType != null">
+        #{subsectionType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.Registration">
+    <!--@mbg.generated-->
+    update his_registration
+    <set>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="doctorName != null">
+        doctor_name = #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="regItemId != null">
+        reg_item_id = #{regItemId,jdbcType=BIGINT},
+      </if>
+      <if test="regItemAmount != null">
+        reg_item_amount = #{regItemAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="regNumber != null">
+        reg_number = #{regNumber,jdbcType=INTEGER},
+      </if>
+      <if test="regStatus != null">
+        reg_status = #{regStatus,jdbcType=CHAR},
+      </if>
+      <if test="visitDate != null">
+        visit_date = #{visitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="schedulingType != null">
+        scheduling_type = #{schedulingType,jdbcType=CHAR},
+      </if>
+      <if test="subsectionType != null">
+        subsection_type = #{subsectionType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reg_id = #{regId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Registration">
+    <!--@mbg.generated-->
+    update his_registration
+    set patient_id = #{patientId,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      doctor_name = #{doctorName,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=BIGINT},
+      reg_item_id = #{regItemId,jdbcType=BIGINT},
+      reg_item_amount = #{regItemAmount,jdbcType=DECIMAL},
+      reg_number = #{regNumber,jdbcType=INTEGER},
+      reg_status = #{regStatus,jdbcType=CHAR},
+      visit_date = #{visitDate,jdbcType=VARCHAR},
+      scheduling_type = #{schedulingType,jdbcType=CHAR},
+      subsection_type = #{subsectionType,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR}
+    where reg_id = #{regId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from his_registration ${ew.customSqlSegment}
+  </select>
+
+</mapper>

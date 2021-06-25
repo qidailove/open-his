@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.PatientMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.Patient">
+    <!--@mbg.generated-->
+    <!--@Table his_patient-->
+    <id column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="id_card" jdbcType="CHAR" property="idCard" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="allergy_info" jdbcType="VARCHAR" property="allergyInfo" />
+    <result column="is_final" jdbcType="CHAR" property="isFinal" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    patient_id, `name`, phone, sex, birthday, id_card, address, allergy_info, is_final, 
+    `password`, openid, last_login_ip, last_login_time, create_time, update_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from his_patient
+    where patient_id = #{patientId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from his_patient
+    where patient_id = #{patientId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.Patient">
+    <!--@mbg.generated-->
+    insert into his_patient (patient_id, `name`, phone, 
+      sex, birthday, id_card, address, 
+      allergy_info, is_final, `password`, 
+      openid, last_login_ip, last_login_time, 
+      create_time, update_time)
+    values (#{patientId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{birthday,jdbcType=VARCHAR}, #{idCard,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, 
+      #{allergyInfo,jdbcType=VARCHAR}, #{isFinal,jdbcType=CHAR}, #{password,jdbcType=VARCHAR}, 
+      #{openid,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.Patient">
+    <!--@mbg.generated-->
+    insert into his_patient
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="allergyInfo != null">
+        allergy_info,
+      </if>
+      <if test="isFinal != null">
+        is_final,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientId != null">
+        #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="allergyInfo != null">
+        #{allergyInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="isFinal != null">
+        #{isFinal,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.Patient">
+    <!--@mbg.generated-->
+    update his_patient
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="allergyInfo != null">
+        allergy_info = #{allergyInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="isFinal != null">
+        is_final = #{isFinal,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where patient_id = #{patientId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Patient">
+    <!--@mbg.generated-->
+    update his_patient
+    set `name` = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
+      allergy_info = #{allergyInfo,jdbcType=VARCHAR},
+      is_final = #{isFinal,jdbcType=CHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where patient_id = #{patientId,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from his_patient ${ew.customSqlSegment}
+  </select>
+
+  <select id="selectOne" resultMap="BaseResultMap">
+    select * from his_patient ${ew.customSqlSegment}
+  </select>
+</mapper>

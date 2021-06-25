@@ -156,5 +156,10 @@ public interface Constants {
      * ID前缀
      */
     String ID_PROFIX_CG="CG";
+    String ID_PROFIX_HZ="HZ";
+    String ID_PROFIX_GH="GH";
+    String ID_PROFIX_CH = "CH";
+    String ID_PROFIX_CO = "CO"; //病历
+    String ID_PROFIX_ITEM = "ITEM"; //病历详情
 
 }
