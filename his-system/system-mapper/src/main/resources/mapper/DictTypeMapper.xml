@@ -148,5 +148,9 @@
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select * from sys_dict_type where dict_id = #{dictId}
   </select>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from sys_dict_type ${ew.customSqlSegment}
+  </select>
   
 </mapper>

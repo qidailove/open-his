@@ -23,7 +23,7 @@
     create_time, update_by, update_time
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
@@ -168,7 +168,19 @@
     where dict_code = #{dictCode,jdbcType=BIGINT}
   </update>
 
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from sys_dict_data ${ew.customSqlSegment}
+  </select>
+
   <select id="selectList" resultMap="BaseResultMap">
     select * from sys_dict_data ${ew.customSqlSegment}
   </select>
+
+  <delete id="deleteBatchIds">
+    delete from sys_dict_data where dict_code in
+    <foreach collection="coll" item="dict_code" index="index" open="(" close=")" separator=",">
+      #{dict_code}
+    </foreach>
+  </delete>
+
 </mapper>
