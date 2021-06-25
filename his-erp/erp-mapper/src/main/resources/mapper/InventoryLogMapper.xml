@@ -219,4 +219,9 @@
       create_by = #{createBy,jdbcType=VARCHAR}
     where inventory_log_id = #{inventoryLogId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from stock_inventory_log ${ew.customSqlSegment}
+  </select>
+
 </mapper>

@@ -1,8 +1,9 @@
 package com.qidaiai.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.InventoryLog;
 
-public interface InventoryLogMapper {
+public interface InventoryLogMapper extends BaseMapper {
     /**
      * delete by primary key
      * @param inventoryLogId primaryKey

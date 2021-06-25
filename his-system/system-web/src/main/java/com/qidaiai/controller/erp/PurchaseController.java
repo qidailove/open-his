@@ -4,6 +4,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.qidaiai.aspectj.annotation.Log;
 import com.qidaiai.aspectj.enums.BusinessType;
 import com.qidaiai.constants.Constants;
+import com.qidaiai.controller.BaseController;
 import com.qidaiai.domain.Purchase;
 import com.qidaiai.domain.PurchaseItem;
 import com.qidaiai.dto.PurchaseDto;
@@ -27,7 +28,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("erp/purchase")
-public class PurchaseController {
+public class PurchaseController extends BaseController {
 
     @Reference
     private PurchaseService purchaseService;
