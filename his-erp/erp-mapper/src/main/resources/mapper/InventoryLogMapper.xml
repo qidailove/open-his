@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.InventoryLogMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.InventoryLog">
+    <!--@mbg.generated-->
+    <!--@Table stock_inventory_log-->
+    <id column="inventory_log_id" jdbcType="VARCHAR" property="inventoryLogId" />
+    <result column="purchase_id" jdbcType="VARCHAR" property="purchaseId" />
+    <result column="medicines_id" jdbcType="VARCHAR" property="medicinesId" />
+    <result column="inventory_log_num" jdbcType="INTEGER" property="inventoryLogNum" />
+    <result column="trade_price" jdbcType="DECIMAL" property="tradePrice" />
+    <result column="trade_total_amount" jdbcType="DECIMAL" property="tradeTotalAmount" />
+    <result column="batch_number" jdbcType="VARCHAR" property="batchNumber" />
+    <result column="medicines_name" jdbcType="VARCHAR" property="medicinesName" />
+    <result column="medicines_type" jdbcType="CHAR" property="medicinesType" />
+    <result column="prescription_type" jdbcType="CHAR" property="prescriptionType" />
+    <result column="producter_id" jdbcType="VARCHAR" property="producterId" />
+    <result column="conversion" jdbcType="INTEGER" property="conversion" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    inventory_log_id, purchase_id, medicines_id, inventory_log_num, trade_price, trade_total_amount, 
+    batch_number, medicines_name, medicines_type, prescription_type, producter_id, `conversion`, 
+    unit, create_time, create_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from stock_inventory_log
+    where inventory_log_id = #{inventoryLogId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from stock_inventory_log
+    where inventory_log_id = #{inventoryLogId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.InventoryLog">
+    <!--@mbg.generated-->
+    insert into stock_inventory_log (inventory_log_id, purchase_id, medicines_id, 
+      inventory_log_num, trade_price, trade_total_amount, 
+      batch_number, medicines_name, medicines_type, 
+      prescription_type, producter_id, `conversion`, 
+      unit, create_time, create_by
+      )
+    values (#{inventoryLogId,jdbcType=VARCHAR}, #{purchaseId,jdbcType=VARCHAR}, #{medicinesId,jdbcType=VARCHAR}, 
+      #{inventoryLogNum,jdbcType=INTEGER}, #{tradePrice,jdbcType=DECIMAL}, #{tradeTotalAmount,jdbcType=DECIMAL}, 
+      #{batchNumber,jdbcType=VARCHAR}, #{medicinesName,jdbcType=VARCHAR}, #{medicinesType,jdbcType=CHAR}, 
+      #{prescriptionType,jdbcType=CHAR}, #{producterId,jdbcType=VARCHAR}, #{conversion,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.InventoryLog">
+    <!--@mbg.generated-->
+    insert into stock_inventory_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="inventoryLogId != null">
+        inventory_log_id,
+      </if>
+      <if test="purchaseId != null">
+        purchase_id,
+      </if>
+      <if test="medicinesId != null">
+        medicines_id,
+      </if>
+      <if test="inventoryLogNum != null">
+        inventory_log_num,
+      </if>
+      <if test="tradePrice != null">
+        trade_price,
+      </if>
+      <if test="tradeTotalAmount != null">
+        trade_total_amount,
+      </if>
+      <if test="batchNumber != null">
+        batch_number,
+      </if>
+      <if test="medicinesName != null">
+        medicines_name,
+      </if>
+      <if test="medicinesType != null">
+        medicines_type,
+      </if>
+      <if test="prescriptionType != null">
+        prescription_type,
+      </if>
+      <if test="producterId != null">
+        producter_id,
+      </if>
+      <if test="conversion != null">
+        `conversion`,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="inventoryLogId != null">
+        #{inventoryLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesId != null">
+        #{medicinesId,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryLogNum != null">
+        #{inventoryLogNum,jdbcType=INTEGER},
+      </if>
+      <if test="tradePrice != null">
+        #{tradePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeTotalAmount != null">
+        #{tradeTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="batchNumber != null">
+        #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesName != null">
+        #{medicinesName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesType != null">
+        #{medicinesType,jdbcType=CHAR},
+      </if>
+      <if test="prescriptionType != null">
+        #{prescriptionType,jdbcType=CHAR},
+      </if>
+      <if test="producterId != null">
+        #{producterId,jdbcType=VARCHAR},
+      </if>
+      <if test="conversion != null">
+        #{conversion,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.InventoryLog">
+    <!--@mbg.generated-->
+    update stock_inventory_log
+    <set>
+      <if test="purchaseId != null">
+        purchase_id = #{purchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesId != null">
+        medicines_id = #{medicinesId,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryLogNum != null">
+        inventory_log_num = #{inventoryLogNum,jdbcType=INTEGER},
+      </if>
+      <if test="tradePrice != null">
+        trade_price = #{tradePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeTotalAmount != null">
+        trade_total_amount = #{tradeTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="batchNumber != null">
+        batch_number = #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesName != null">
+        medicines_name = #{medicinesName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesType != null">
+        medicines_type = #{medicinesType,jdbcType=CHAR},
+      </if>
+      <if test="prescriptionType != null">
+        prescription_type = #{prescriptionType,jdbcType=CHAR},
+      </if>
+      <if test="producterId != null">
+        producter_id = #{producterId,jdbcType=VARCHAR},
+      </if>
+      <if test="conversion != null">
+        `conversion` = #{conversion,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where inventory_log_id = #{inventoryLogId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.InventoryLog">
+    <!--@mbg.generated-->
+    update stock_inventory_log
+    set purchase_id = #{purchaseId,jdbcType=VARCHAR},
+      medicines_id = #{medicinesId,jdbcType=VARCHAR},
+      inventory_log_num = #{inventoryLogNum,jdbcType=INTEGER},
+      trade_price = #{tradePrice,jdbcType=DECIMAL},
+      trade_total_amount = #{tradeTotalAmount,jdbcType=DECIMAL},
+      batch_number = #{batchNumber,jdbcType=VARCHAR},
+      medicines_name = #{medicinesName,jdbcType=VARCHAR},
+      medicines_type = #{medicinesType,jdbcType=CHAR},
+      prescription_type = #{prescriptionType,jdbcType=CHAR},
+      producter_id = #{producterId,jdbcType=VARCHAR},
+      `conversion` = #{conversion,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR}
+    where inventory_log_id = #{inventoryLogId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.PurchaseMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.Purchase">
+    <!--@mbg.generated-->
+    <!--@Table stock_purchase-->
+    <id column="purchase_id" jdbcType="VARCHAR" property="purchaseId" />
+    <result column="provider_id" jdbcType="VARCHAR" property="providerId" />
+    <result column="purchase_trade_total_amount" jdbcType="DECIMAL" property="purchaseTradeTotalAmount" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="apply_user_id" jdbcType="BIGINT" property="applyUserId" />
+    <result column="apply_user_name" jdbcType="VARCHAR" property="applyUserName" />
+    <result column="storage_opt_user" jdbcType="VARCHAR" property="storageOptUser" />
+    <result column="storage_opt_time" jdbcType="TIMESTAMP" property="storageOptTime" />
+    <result column="audit_msg" jdbcType="VARCHAR" property="auditMsg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    purchase_id, provider_id, purchase_trade_total_amount, `status`, apply_user_id, apply_user_name, 
+    storage_opt_user, storage_opt_time, audit_msg, create_time, update_time, create_by, 
+    update_by
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from stock_purchase
+    where purchase_id = #{purchaseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from stock_purchase
+    where purchase_id = #{purchaseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.Purchase">
+    <!--@mbg.generated-->
+    insert into stock_purchase (purchase_id, provider_id, purchase_trade_total_amount, 
+      `status`, apply_user_id, apply_user_name, 
+      storage_opt_user, storage_opt_time, audit_msg, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{purchaseId,jdbcType=VARCHAR}, #{providerId,jdbcType=VARCHAR}, #{purchaseTradeTotalAmount,jdbcType=DECIMAL}, 
+      #{status,jdbcType=CHAR}, #{applyUserId,jdbcType=BIGINT}, #{applyUserName,jdbcType=VARCHAR}, 
+      #{storageOptUser,jdbcType=VARCHAR}, #{storageOptTime,jdbcType=TIMESTAMP}, #{auditMsg,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.Purchase">
+    <!--@mbg.generated-->
+    insert into stock_purchase
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="purchaseId != null">
+        purchase_id,
+      </if>
+      <if test="providerId != null">
+        provider_id,
+      </if>
+      <if test="purchaseTradeTotalAmount != null">
+        purchase_trade_total_amount,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="applyUserId != null">
+        apply_user_id,
+      </if>
+      <if test="applyUserName != null">
+        apply_user_name,
+      </if>
+      <if test="storageOptUser != null">
+        storage_opt_user,
+      </if>
+      <if test="storageOptTime != null">
+        storage_opt_time,
+      </if>
+      <if test="auditMsg != null">
+        audit_msg,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="providerId != null">
+        #{providerId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseTradeTotalAmount != null">
+        #{purchaseTradeTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="applyUserId != null">
+        #{applyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="applyUserName != null">
+        #{applyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="storageOptUser != null">
+        #{storageOptUser,jdbcType=VARCHAR},
+      </if>
+      <if test="storageOptTime != null">
+        #{storageOptTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditMsg != null">
+        #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.Purchase">
+    <!--@mbg.generated-->
+    update stock_purchase
+    <set>
+      <if test="providerId != null">
+        provider_id = #{providerId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseTradeTotalAmount != null">
+        purchase_trade_total_amount = #{purchaseTradeTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="applyUserId != null">
+        apply_user_id = #{applyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="applyUserName != null">
+        apply_user_name = #{applyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="storageOptUser != null">
+        storage_opt_user = #{storageOptUser,jdbcType=VARCHAR},
+      </if>
+      <if test="storageOptTime != null">
+        storage_opt_time = #{storageOptTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditMsg != null">
+        audit_msg = #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where purchase_id = #{purchaseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateById" parameterType="com.qidaiai.domain.Purchase">
+    <!--@mbg.generated-->
+    update stock_purchase
+    set provider_id = #{providerId,jdbcType=VARCHAR},
+      purchase_trade_total_amount = #{purchaseTradeTotalAmount,jdbcType=DECIMAL},
+      `status` = #{status,jdbcType=CHAR},
+      apply_user_id = #{applyUserId,jdbcType=BIGINT},
+      apply_user_name = #{applyUserName,jdbcType=VARCHAR},
+      storage_opt_user = #{storageOptUser,jdbcType=VARCHAR},
+      storage_opt_time = #{storageOptTime,jdbcType=TIMESTAMP},
+      audit_msg = #{auditMsg,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where purchase_id = #{purchaseId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from stock_purchase ${ew.customSqlSegment}
+  </select>
+
+</mapper>

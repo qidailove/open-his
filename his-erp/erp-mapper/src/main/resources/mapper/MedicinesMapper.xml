@@ -214,7 +214,7 @@
     </set>
     where medicines_id = #{medicinesId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Medicines">
+  <update id="updateById" parameterType="com.qidaiai.domain.Medicines">
     <!--@mbg.generated-->
     update stock_medicines
     set medicines_number = #{medicinesNumber,jdbcType=VARCHAR},

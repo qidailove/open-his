@@ -187,4 +187,8 @@
       #{producter_id}
     </foreach>
   </delete>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from stock_producter ${ew.customSqlSegment}
+  </select>
 </mapper>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.PurchaseItemMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.PurchaseItem">
+    <!--@mbg.generated-->
+    <!--@Table stock_purchase_item-->
+    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="purchase_id" jdbcType="VARCHAR" property="purchaseId" />
+    <result column="purchase_number" jdbcType="INTEGER" property="purchaseNumber" />
+    <result column="trade_price" jdbcType="DECIMAL" property="tradePrice" />
+    <result column="trade_total_amount" jdbcType="DECIMAL" property="tradeTotalAmount" />
+    <result column="batch_number" jdbcType="VARCHAR" property="batchNumber" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="medicines_id" jdbcType="VARCHAR" property="medicinesId" />
+    <result column="medicines_name" jdbcType="VARCHAR" property="medicinesName" />
+    <result column="medicines_type" jdbcType="CHAR" property="medicinesType" />
+    <result column="prescription_type" jdbcType="CHAR" property="prescriptionType" />
+    <result column="producter_id" jdbcType="VARCHAR" property="producterId" />
+    <result column="conversion" jdbcType="INTEGER" property="conversion" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    item_id, purchase_id, purchase_number, trade_price, trade_total_amount, batch_number, 
+    remark, medicines_id, medicines_name, medicines_type, prescription_type, producter_id, 
+    `conversion`, unit, keywords
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from stock_purchase_item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from stock_purchase_item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.PurchaseItem">
+    <!--@mbg.generated-->
+    insert into stock_purchase_item (item_id, purchase_id, purchase_number, 
+      trade_price, trade_total_amount, batch_number, 
+      remark, medicines_id, medicines_name, 
+      medicines_type, prescription_type, producter_id, 
+      `conversion`, unit, keywords
+      )
+    values (#{itemId,jdbcType=VARCHAR}, #{purchaseId,jdbcType=VARCHAR}, #{purchaseNumber,jdbcType=INTEGER}, 
+      #{tradePrice,jdbcType=DECIMAL}, #{tradeTotalAmount,jdbcType=DECIMAL}, #{batchNumber,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{medicinesId,jdbcType=VARCHAR}, #{medicinesName,jdbcType=VARCHAR}, 
+      #{medicinesType,jdbcType=CHAR}, #{prescriptionType,jdbcType=CHAR}, #{producterId,jdbcType=VARCHAR}, 
+      #{conversion,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.PurchaseItem">
+    <!--@mbg.generated-->
+    insert into stock_purchase_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="purchaseId != null">
+        purchase_id,
+      </if>
+      <if test="purchaseNumber != null">
+        purchase_number,
+      </if>
+      <if test="tradePrice != null">
+        trade_price,
+      </if>
+      <if test="tradeTotalAmount != null">
+        trade_total_amount,
+      </if>
+      <if test="batchNumber != null">
+        batch_number,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="medicinesId != null">
+        medicines_id,
+      </if>
+      <if test="medicinesName != null">
+        medicines_name,
+      </if>
+      <if test="medicinesType != null">
+        medicines_type,
+      </if>
+      <if test="prescriptionType != null">
+        prescription_type,
+      </if>
+      <if test="producterId != null">
+        producter_id,
+      </if>
+      <if test="conversion != null">
+        `conversion`,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="keywords != null">
+        keywords,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseNumber != null">
+        #{purchaseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tradePrice != null">
+        #{tradePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeTotalAmount != null">
+        #{tradeTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="batchNumber != null">
+        #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesId != null">
+        #{medicinesId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesName != null">
+        #{medicinesName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesType != null">
+        #{medicinesType,jdbcType=CHAR},
+      </if>
+      <if test="prescriptionType != null">
+        #{prescriptionType,jdbcType=CHAR},
+      </if>
+      <if test="producterId != null">
+        #{producterId,jdbcType=VARCHAR},
+      </if>
+      <if test="conversion != null">
+        #{conversion,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.PurchaseItem">
+    <!--@mbg.generated-->
+    update stock_purchase_item
+    <set>
+      <if test="purchaseId != null">
+        purchase_id = #{purchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseNumber != null">
+        purchase_number = #{purchaseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tradePrice != null">
+        trade_price = #{tradePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeTotalAmount != null">
+        trade_total_amount = #{tradeTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="batchNumber != null">
+        batch_number = #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesId != null">
+        medicines_id = #{medicinesId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesName != null">
+        medicines_name = #{medicinesName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinesType != null">
+        medicines_type = #{medicinesType,jdbcType=CHAR},
+      </if>
+      <if test="prescriptionType != null">
+        prescription_type = #{prescriptionType,jdbcType=CHAR},
+      </if>
+      <if test="producterId != null">
+        producter_id = #{producterId,jdbcType=VARCHAR},
+      </if>
+      <if test="conversion != null">
+        `conversion` = #{conversion,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.PurchaseItem">
+    <!--@mbg.generated-->
+    update stock_purchase_item
+    set purchase_id = #{purchaseId,jdbcType=VARCHAR},
+      purchase_number = #{purchaseNumber,jdbcType=INTEGER},
+      trade_price = #{tradePrice,jdbcType=DECIMAL},
+      trade_total_amount = #{tradeTotalAmount,jdbcType=DECIMAL},
+      batch_number = #{batchNumber,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      medicines_id = #{medicinesId,jdbcType=VARCHAR},
+      medicines_name = #{medicinesName,jdbcType=VARCHAR},
+      medicines_type = #{medicinesType,jdbcType=CHAR},
+      prescription_type = #{prescriptionType,jdbcType=CHAR},
+      producter_id = #{producterId,jdbcType=VARCHAR},
+      `conversion` = #{conversion,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from stock_purchase_item ${ew.customSqlSegment}
+  </select>
+
+</mapper>
