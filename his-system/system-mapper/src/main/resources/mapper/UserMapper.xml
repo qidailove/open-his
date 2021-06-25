@@ -52,4 +52,13 @@
     select * from sys_user ${ew.customSqlSegment}
   </select>
 
+  <select id="selectListForScheduling" resultMap="BaseResultMap">
+    select * from sys_user where scheduling_flag = #{flag}
+    <if test="deptId != null and deptId !='' ">
+      and dept_id = #{deptId}
+    </if>
+    <if test="userId != null and userId !=''">
+      and user_id = #{userId}
+    </if>
+  </select>
 </mapper>

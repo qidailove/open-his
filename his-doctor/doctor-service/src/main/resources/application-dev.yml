@@ -1,4 +1,6 @@
 
+server:
+  port: 8082
 #spring的配置
 spring:
   #数据源配置
@@ -37,7 +39,7 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:mapper/*/*Mapper.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
   global-config:
 
     #数据库主键id自增

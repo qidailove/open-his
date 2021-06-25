@@ -31,6 +31,13 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!--依赖doctor-api-->
+        <dependency>
+            <groupId>com.qidaiai</groupId>
+            <artifactId>doctor-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>

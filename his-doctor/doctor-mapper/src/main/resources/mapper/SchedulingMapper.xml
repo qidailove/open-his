@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.SchedulingMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.Scheduling">
+    <!--@mbg.generated-->
+    <!--@Table his_scheduling-->
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="dept_id" jdbcType="BIGINT" property="deptId" />
+    <result column="scheduling_day" jdbcType="VARCHAR" property="schedulingDay" />
+    <result column="subsection_type" jdbcType="CHAR" property="subsectionType" />
+    <result column="scheduling_type" jdbcType="CHAR" property="schedulingType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, dept_id, scheduling_day, subsection_type, scheduling_type, create_time, 
+    create_by
+  </sql>
+  <insert id="insert" parameterType="com.qidaiai.domain.Scheduling">
+    <!--@mbg.generated-->
+    insert into his_scheduling (user_id, dept_id, scheduling_day, 
+      subsection_type, scheduling_type, create_time, 
+      create_by)
+    values (#{userId,jdbcType=BIGINT}, #{deptId,jdbcType=BIGINT}, #{schedulingDay,jdbcType=VARCHAR}, 
+      #{subsectionType,jdbcType=CHAR}, #{schedulingType,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.Scheduling">
+    <!--@mbg.generated-->
+    insert into his_scheduling
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="schedulingDay != null">
+        scheduling_day,
+      </if>
+      <if test="subsectionType != null">
+        subsection_type,
+      </if>
+      <if test="schedulingType != null">
+        scheduling_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="schedulingDay != null">
+        #{schedulingDay,jdbcType=VARCHAR},
+      </if>
+      <if test="subsectionType != null">
+        #{subsectionType,jdbcType=CHAR},
+      </if>
+      <if test="schedulingType != null">
+        #{schedulingType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from his_scheduling ${ew.customSqlSegment}
+  </select>
+
+</mapper>
