@@ -144,4 +144,7 @@
     </foreach>
   </delete>
 
+  <select id="selectListBySql" resultMap="BaseResultMap">
+    select * from sys_registered_item where status = 0
+    </select>
 </mapper>

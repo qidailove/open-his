@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.CareOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.CareOrderItem">
+    <!--@mbg.generated-->
+    <!--@Table his_care_order_item-->
+    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="co_id" jdbcType="VARCHAR" property="coId" />
+    <result column="item_ref_id" jdbcType="VARCHAR" property="itemRefId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_type" jdbcType="CHAR" property="itemType" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    item_id, co_id, item_ref_id, item_name, item_type, num, price, amount, remark, `status`, 
+    create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from his_care_order_item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from his_care_order_item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.CareOrderItem">
+    <!--@mbg.generated-->
+    insert into his_care_order_item (item_id, co_id, item_ref_id, 
+      item_name, item_type, num, 
+      price, amount, remark, 
+      `status`, create_time)
+    values (#{itemId,jdbcType=VARCHAR}, #{coId,jdbcType=VARCHAR}, #{itemRefId,jdbcType=VARCHAR}, 
+      #{itemName,jdbcType=VARCHAR}, #{itemType,jdbcType=CHAR}, #{num,jdbcType=DECIMAL}, 
+      #{price,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.CareOrderItem">
+    <!--@mbg.generated-->
+    insert into his_care_order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="coId != null">
+        co_id,
+      </if>
+      <if test="itemRefId != null">
+        item_ref_id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="coId != null">
+        #{coId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemRefId != null">
+        #{itemRefId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.CareOrderItem">
+    <!--@mbg.generated-->
+    update his_care_order_item
+    <set>
+      <if test="coId != null">
+        co_id = #{coId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemRefId != null">
+        item_ref_id = #{itemRefId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CareOrderItem">
+    <!--@mbg.generated-->
+    update his_care_order_item
+    set co_id = #{coId,jdbcType=VARCHAR},
+      item_ref_id = #{itemRefId,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=CHAR},
+      num = #{num,jdbcType=DECIMAL},
+      price = #{price,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+</mapper>

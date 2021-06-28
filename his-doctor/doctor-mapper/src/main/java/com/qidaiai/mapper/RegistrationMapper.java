@@ -2,6 +2,9 @@ package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.Registration;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface RegistrationMapper extends BaseMapper {
     /**
@@ -45,4 +48,7 @@ public interface RegistrationMapper extends BaseMapper {
      * @return update count
      */
     int updateByPrimaryKey(Registration record);
+
+    List<Registration> selectListBySql(@Param(value = "deptId") Long deptId, @Param(value = "subsectionType") String subsectionType, @Param(value = "scheudlingType") String scheudlingType, @Param(value = "regStatus") String regStatus, @Param(value = "date") String date, @Param(value = "userId") Long userId);
+
 }

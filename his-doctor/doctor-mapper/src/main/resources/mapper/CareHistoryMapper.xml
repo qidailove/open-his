@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.CareHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.CareHistory">
+    <!--@mbg.generated-->
+    <!--@Table his_care_history-->
+    <id column="ch_id" jdbcType="VARCHAR" property="chId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="dept_id" jdbcType="BIGINT" property="deptId" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="receive_type" jdbcType="CHAR" property="receiveType" />
+    <result column="is_contagious" jdbcType="CHAR" property="isContagious" />
+    <result column="care_date" jdbcType="TIMESTAMP" property="careDate" />
+    <result column="case_date" jdbcType="VARCHAR" property="caseDate" />
+    <result column="reg_id" jdbcType="VARCHAR" property="regId" />
+    <result column="case_title" jdbcType="VARCHAR" property="caseTitle" />
+    <result column="case_result" jdbcType="VARCHAR" property="caseResult" />
+    <result column="doctor_tips" jdbcType="VARCHAR" property="doctorTips" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    ch_id, user_id, user_name, patient_id, patient_name, dept_id, dept_name, receive_type, 
+    is_contagious, care_date, case_date, reg_id, case_title, case_result, doctor_tips, 
+    remark
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from his_care_history
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from his_care_history
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.CareHistory">
+    <!--@mbg.generated-->
+    insert into his_care_history (ch_id, user_id, user_name, 
+      patient_id, patient_name, dept_id, 
+      dept_name, receive_type, is_contagious, 
+      care_date, case_date, reg_id, 
+      case_title, case_result, doctor_tips, 
+      remark)
+    values (#{chId,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
+      #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{deptId,jdbcType=BIGINT}, 
+      #{deptName,jdbcType=VARCHAR}, #{receiveType,jdbcType=CHAR}, #{isContagious,jdbcType=CHAR}, 
+      #{careDate,jdbcType=TIMESTAMP}, #{caseDate,jdbcType=VARCHAR}, #{regId,jdbcType=VARCHAR}, 
+      #{caseTitle,jdbcType=VARCHAR}, #{caseResult,jdbcType=VARCHAR}, #{doctorTips,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.CareHistory">
+    <!--@mbg.generated-->
+    insert into his_care_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chId != null">
+        ch_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="receiveType != null">
+        receive_type,
+      </if>
+      <if test="isContagious != null">
+        is_contagious,
+      </if>
+      <if test="careDate != null">
+        care_date,
+      </if>
+      <if test="caseDate != null">
+        case_date,
+      </if>
+      <if test="regId != null">
+        reg_id,
+      </if>
+      <if test="caseTitle != null">
+        case_title,
+      </if>
+      <if test="caseResult != null">
+        case_result,
+      </if>
+      <if test="doctorTips != null">
+        doctor_tips,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chId != null">
+        #{chId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveType != null">
+        #{receiveType,jdbcType=CHAR},
+      </if>
+      <if test="isContagious != null">
+        #{isContagious,jdbcType=CHAR},
+      </if>
+      <if test="careDate != null">
+        #{careDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseDate != null">
+        #{caseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="regId != null">
+        #{regId,jdbcType=VARCHAR},
+      </if>
+      <if test="caseTitle != null">
+        #{caseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="caseResult != null">
+        #{caseResult,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTips != null">
+        #{doctorTips,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.CareHistory">
+    <!--@mbg.generated-->
+    update his_care_history
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveType != null">
+        receive_type = #{receiveType,jdbcType=CHAR},
+      </if>
+      <if test="isContagious != null">
+        is_contagious = #{isContagious,jdbcType=CHAR},
+      </if>
+      <if test="careDate != null">
+        care_date = #{careDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseDate != null">
+        case_date = #{caseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="regId != null">
+        reg_id = #{regId,jdbcType=VARCHAR},
+      </if>
+      <if test="caseTitle != null">
+        case_title = #{caseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="caseResult != null">
+        case_result = #{caseResult,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTips != null">
+        doctor_tips = #{doctorTips,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CareHistory">
+    <!--@mbg.generated-->
+    update his_care_history
+    set user_id = #{userId,jdbcType=BIGINT},
+      user_name = #{userName,jdbcType=VARCHAR},
+      patient_id = #{patientId,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=BIGINT},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      receive_type = #{receiveType,jdbcType=CHAR},
+      is_contagious = #{isContagious,jdbcType=CHAR},
+      care_date = #{careDate,jdbcType=TIMESTAMP},
+      case_date = #{caseDate,jdbcType=VARCHAR},
+      reg_id = #{regId,jdbcType=VARCHAR},
+      case_title = #{caseTitle,jdbcType=VARCHAR},
+      case_result = #{caseResult,jdbcType=VARCHAR},
+      doctor_tips = #{doctorTips,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectOne" resultMap="BaseResultMap">
+    select * from his_care_history ${ew.customSqlSegment}
+  </select>
+
+</mapper>

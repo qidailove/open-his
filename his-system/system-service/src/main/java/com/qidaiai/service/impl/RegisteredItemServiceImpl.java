@@ -68,8 +68,9 @@ public class RegisteredItemServiceImpl implements RegisteredItemService{
 
     @Override
     public List<RegisteredItem> queryAllRegisteredItems() {
-        QueryWrapper<RegisteredItem> qw=new QueryWrapper<>();
-        qw.eq(RegisteredItem.COL_STATUS, Constants.STATUS_TRUE);
-        return this.registeredItemMapper.selectList(qw);
+//        QueryWrapper<RegisteredItem> qw=new QueryWrapper<>();
+//        qw.eq(RegisteredItem.COL_STATUS, Constants.STATUS_TRUE);
+//        return this.registeredItemMapper.selectList(qw);
+        return this.registeredItemMapper.selectListBySql();
     }
 }

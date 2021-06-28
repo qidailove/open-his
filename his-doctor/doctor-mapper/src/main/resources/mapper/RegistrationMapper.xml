@@ -235,4 +235,18 @@
     select * from his_registration ${ew.customSqlSegment}
   </select>
 
+  <select id="selectList" resultMap="BaseResultMap">
+    select * from his_registration ${ew.customSqlSegment}
+  </select>
+
+  <select id="selectListBySql" resultMap="BaseResultMap">
+    select * from his_registration where dept_id = #{deptId} and scheduling_type = #{scheudlingType} and reg_status = #{regStatus} and visit_date = #{date}
+      <if test="subsectionType != null and scheudlingType != ''">
+        and subsection_type = #{subsectionType}
+      </if>
+      <if test="userId != null and userId != ''">
+        and user_id = #{userId}
+      </if>
+    order by reg_number desc
+  </select>
 </mapper>

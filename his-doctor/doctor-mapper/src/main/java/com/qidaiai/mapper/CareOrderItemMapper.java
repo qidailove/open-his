@@ -1,52 +1,48 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.RegisteredItem;
+import com.qidaiai.domain.CareOrderItem;
 
-import java.util.List;
-
-public interface RegisteredItemMapper extends BaseMapper {
+public interface CareOrderItemMapper extends BaseMapper {
     /**
      * delete by primary key
-     * @param regItemId primaryKey
+     * @param itemId primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(Long regItemId);
+    int deleteByPrimaryKey(String itemId);
 
     /**
      * insert record to table
      * @param record the record
      * @return insert count
      */
-    int insert(RegisteredItem record);
+    int insert(CareOrderItem record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(RegisteredItem record);
+    int insertSelective(CareOrderItem record);
 
     /**
      * select by primary key
-     * @param regItemId primary key
+     * @param itemId primary key
      * @return object by primary key
      */
-    RegisteredItem selectById(Long regItemId);
+    CareOrderItem selectById(String itemId);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(RegisteredItem record);
+    int updateByPrimaryKeySelective(CareOrderItem record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateById(RegisteredItem record);
-
-    List<RegisteredItem> selectListBySql();
+    int updateByPrimaryKey(CareOrderItem record);
 }

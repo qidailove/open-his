@@ -14,6 +14,9 @@ import com.qidaiai.vo.DataGridView;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 @Service
 public class RegistrationServiceImpl implements RegistrationService{
 
@@ -53,6 +56,30 @@ public class RegistrationServiceImpl implements RegistrationService{
     @Override
     public Registration queryRegistrationByRegId(String registrationId) {
         return this.registrationMapper.selectById(registrationId);
+    }
+
+    /**
+     * 根据条件查询挂号信息
+     * @param deptId 部门
+     * @param subsectionType  时段
+     * @param scheudlingType  类型  门诊 急诊
+     * @param regStatus    挂号单状态
+     * @param userId   医生ID
+     * @return
+     */
+    @Override
+    public List<Registration> queryRegistration(Long deptId, String subsectionType, String scheudlingType, String regStatus, Long userId) {
+//        QueryWrapper<Registration> qw=new QueryWrapper<>();
+//        qw.eq(Registration.COL_DEPT_ID,deptId);
+//        qw.eq(StringUtils.isNotBlank(subsectionType),Registration.COL_SUBSECTION_TYPE,subsectionType);
+//        qw.eq(Registration.COL_SCHEDULING_TYPE,scheudlingType);
+//        qw.eq(Registration.COL_REG_STATUS,regStatus);
+//        qw.eq(Registration.COL_VISIT_DATE,DateUtil.format(DateUtil.date(),"yyyy-MM-dd"));
+//        qw.eq(null!=userId,Registration.COL_USER_ID,userId);
+//        qw.orderByAsc(Registration.COL_REG_NUMBER);
+        return this.registrationMapper.selectListBySql(deptId,subsectionType,scheudlingType,regStatus, new SimpleDateFormat("yyyy-MM-dd").format(DateUtil.date()), userId);
+
+//        return this.registrationMapper.selectList(qw);
     }
 
 }

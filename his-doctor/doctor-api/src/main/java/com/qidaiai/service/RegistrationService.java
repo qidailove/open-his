@@ -4,6 +4,8 @@ import com.qidaiai.domain.Registration;
 import com.qidaiai.dto.RegistrationDto;
 import com.qidaiai.vo.DataGridView;
 
+import java.util.List;
+
 public interface RegistrationService{
 
     /**
@@ -32,5 +34,16 @@ public interface RegistrationService{
      * @return
      */
     Registration queryRegistrationByRegId(String registrationId);
+
+    /**
+     * 根据条件查询挂号信息
+     * @param deptId 部门
+     * @param subsectionType  时段
+     * @param scheudlingType  类型  门诊 急诊
+     * @param regStatus    挂号单状态
+     * @param userId   医生ID
+     * @return
+     */
+    List<Registration> queryRegistration(Long deptId, String subsectionType, String scheudlingType, String regStatus, Long userId);
 
 }
