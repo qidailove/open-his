@@ -161,5 +161,7 @@ public interface Constants {
     String ID_PROFIX_CH = "CH";
     String ID_PROFIX_CO = "CO"; //病历
     String ID_PROFIX_ITEM = "ITEM"; //病历详情
+    String ID_PROFIX_ODC = "ODC"; //收费订单的前缀
+    String ID_PROFIX_ODB = "ODB";//退费订单ID的前缀
 
 }

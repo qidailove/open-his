@@ -82,20 +82,44 @@
   </select>
 
   <select id="queryHasSchedulingDeptIds" resultType="java.lang.Long">
-    select distinct dept_id from his_scheduling t
+    select distinct dept_id from his_scheduling
     <where>
-      <if test="deptId != null">
-        t.dept_id =#{deptId}
-      </if>
-      <if test="schedulingType!= null">
-        and t.scheduling_type=#{schedulingType}
-      </if>
-      <if test="schedulingDay!=null">
-        and  t.scheduling_day=#{schedulingDay}
-      </if>
-      <if test="subsectionType!=null">
-        and  t.subsection_type=#{subsectionType}
-      </if>
+      <choose>
+        <when test="deptId != null and deptId != ''">
+          dept_id = #{deptId}
+        </when>
+        <otherwise>
+          1 = 1
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="schedulingType != null and schedulingType != ''">
+          and scheduling_type = #{schedulingType}
+        </when>
+        <otherwise>
+          and scheduling_type != null
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="schedulingDay != null and schedulingDay != ''">
+          and scheduling_day=#{schedulingDay}
+        </when>
+        <otherwise>
+          and scheduling_day != null
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="subsectionType != null and subsectionType != ''">
+          and  subsection_type=#{subsectionType}
+        </when>
+        <otherwise>
+          and subsection_type != null
+        </otherwise>
+      </choose>
     </where>
   </select>
+
+  <delete id="deleteBySql">
+    delete from his_scheduling where user_id = #{userId} and dept_id = #{deptId} and scheduling_day <![CDATA[>=]]> #{beginDate} and scheduling_day <![CDATA[<=]]> #{endDate}
+  </delete>
 </mapper>

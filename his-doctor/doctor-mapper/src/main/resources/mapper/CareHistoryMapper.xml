@@ -210,7 +210,7 @@
     </set>
     where ch_id = #{chId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CareHistory">
+  <update id="updateById" parameterType="com.qidaiai.domain.CareHistory">
     <!--@mbg.generated-->
     update his_care_history
     set user_id = #{userId,jdbcType=BIGINT},
@@ -235,4 +235,7 @@
     select * from his_care_history ${ew.customSqlSegment}
   </select>
 
+  <select id="selectListBySql" resultMap="BaseResultMap">
+    select * from his_care_history where patient_id = #{patientId}
+  </select>
 </mapper>

@@ -3,6 +3,8 @@ package com.qidaiai.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.CareOrderItem;
 
+import java.util.List;
+
 public interface CareOrderItemMapper extends BaseMapper {
     /**
      * delete by primary key
@@ -45,4 +47,7 @@ public interface CareOrderItemMapper extends BaseMapper {
      * @return update count
      */
     int updateByPrimaryKey(CareOrderItem record);
+
+
+    List<CareOrderItem> selectListBySql(String coId, String status);
 }

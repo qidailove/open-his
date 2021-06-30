@@ -1,19 +1,25 @@
 package com.qidaiai.controller.docter;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.qidaiai.config.pay.AlipayConfig;
+import com.qidaiai.config.pay.PayService;
 import com.qidaiai.constants.Constants;
 import com.qidaiai.controller.BaseController;
-import com.qidaiai.domain.CareHistory;
-import com.qidaiai.domain.CareOrder;
-import com.qidaiai.domain.CareOrderItem;
+import com.qidaiai.domain.*;
+import com.qidaiai.dto.OrderChargeDto;
+import com.qidaiai.dto.OrderChargeFromDto;
+import com.qidaiai.dto.OrderChargeItemDto;
 import com.qidaiai.service.CareService;
+import com.qidaiai.service.OrderChargeService;
+import com.qidaiai.utils.IdGeneratorSnowflake;
+import com.qidaiai.utils.ShiroSecurityUtils;
 import com.qidaiai.vo.AjaxResult;
+import com.qidaiai.vo.DataGridView;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -29,6 +35,9 @@ public class OrderChargeController extends BaseController {
 
     @Reference
     private CareService careService;
+
+    @Reference
+    private OrderChargeService orderChargeService;
 
     /**
      * 根据挂号ID查询未支付的处方信息及详情
@@ -79,4 +88,140 @@ public class OrderChargeController extends BaseController {
             return AjaxResult.success(res);
         }
     }
+
+    /**
+     * 创建现金收费订单
+     */
+    @PostMapping("createOrderChargeWithCash")
+    public AjaxResult createOrderChargeWithCash(@RequestBody @Validated OrderChargeFromDto orderChargeFromDto){
+        //1,保存订单
+        orderChargeFromDto.getOrderChargeDto().setPayType(Constants.PAY_TYPE_0);//现金支付
+        orderChargeFromDto.setSimpleUser(ShiroSecurityUtils.getCurrentSimpleUser());
+        String orderId = IdGeneratorSnowflake.generatorIdWithProfix(Constants.ID_PROFIX_ODC);
+        orderChargeFromDto.getOrderChargeDto().setOrderId(orderId);
+        this.orderChargeService.saveOrderAndItems(orderChargeFromDto);
+        //2,因为是现金支付，所有直接更新详情状态
+        this.orderChargeService.paySuccess(orderId,null);
+        return AjaxResult.success("创建订单并现金支付成功");
+    }
+
+    /**
+     * 创建支付宝收费订单
+     */
+    @PostMapping("createOrderChargeWithZfb")
+    public AjaxResult createOrderChargeWithZfb(@RequestBody @Validated OrderChargeFromDto orderChargeFromDto){
+        //1,保存订单
+        orderChargeFromDto.getOrderChargeDto().setPayType(Constants.PAY_TYPE_1);//支付宝支付
+        orderChargeFromDto.setSimpleUser(ShiroSecurityUtils.getCurrentSimpleUser());
+        String orderId = IdGeneratorSnowflake.generatorIdWithProfix(Constants.ID_PROFIX_ODC);
+        orderChargeFromDto.getOrderChargeDto().setOrderId(orderId);
+        this.orderChargeService.saveOrderAndItems(orderChargeFromDto);
+        //2,因为是支付宝支付，所以我们要返回给页面一个二维码
+        String outTradeNo=orderId;
+        String subject="SXT-医疗管理系统支付平台";
+        String totalAmount=orderChargeFromDto.getOrderChargeDto().getOrderAmount().toString();
+        String undiscountableAmount=null;
+        String body="";
+        List<OrderChargeItemDto> orderChargeItemDtoList = orderChargeFromDto.getOrderChargeItemDtoList();
+        for (OrderChargeItemDto orderChargeItemDto : orderChargeItemDtoList) {
+            body+=orderChargeItemDto.getItemName()+"-"+orderChargeItemDto.getItemPrice()+" ";
+        }
+        String notifyUrl= AlipayConfig.notifyUrl+outTradeNo;
+        Map<String, Object> pay = PayService.pay(outTradeNo, subject, totalAmount, undiscountableAmount, body, notifyUrl);
+        String qrCode = pay.get("qrCode").toString();
+        if(StringUtils.isNotBlank(qrCode)){
+            //创建支付成功
+            Map<String,Object> map=new HashMap<>();
+            map.put("orderId",orderId);
+            map.put("allAmount",totalAmount);
+            map.put("payUrl",qrCode);
+            return AjaxResult.success(map);
+        }else{
+            return AjaxResult.fail(pay.get("msg").toString());
+        }
+    }
+
+    /**
+     * 根据订单ID查询订单信息【验证是否支付成功】
+     */
+    @GetMapping("queryOrderChargeOrderId/{orderId}")
+    public AjaxResult queryOrderChargeOrderId(@PathVariable String orderId){
+        OrderCharge orderCharge=this.orderChargeService.queryOrderChargeByOrderId(orderId);
+        if(null==orderCharge){
+            return AjaxResult.fail("【"+orderId+"】订单号所在的订单不存在，请核对后再输入");
+        }
+        if(!orderCharge.getPayType().equals(Constants.PAY_TYPE_1)){
+            return AjaxResult.fail("【"+orderId+"】订单号所在的订单不是支付宝支付的订单，请核对后再输入");
+        }
+        return  AjaxResult.success(orderCharge);
+    }
+
+
+    /**
+     * 分页查询所有收费单
+     */
+    @GetMapping("queryAllOrderChargeForPage")
+    public AjaxResult queryAllOrderChargeForPage(OrderChargeDto orderChargeDto){
+        DataGridView dataGridView=this.orderChargeService.queryAllOrderChargeForPage(orderChargeDto);
+        return AjaxResult.success("查询成功",dataGridView.getData(),dataGridView.getTotal());
+    }
+
+    /**
+     * 根据收费单的ID查询收费详情信息
+     */
+    @GetMapping("queryOrderChargeItemByOrderId/{orderId}")
+    public AjaxResult queryOrderChargeItemByOrderId(@PathVariable String orderId){
+        List<OrderChargeItem> list=this.orderChargeService.queryOrderChargeItemByOrderId(orderId);
+        return AjaxResult.success(list);
+    }
+
+    /**
+     * 订单列表现金支付订单
+     */
+    @GetMapping("payWithCash/{orderId}")
+    public AjaxResult payWithCash(@PathVariable String orderId){
+        OrderCharge orderCharge=this.orderChargeService.queryOrderChargeByOrderId(orderId);
+        if(null==orderCharge){
+            return AjaxResult.fail("【"+orderId+"】订单号所在的订单不存在，请核对后再输入");
+        }
+        if(orderCharge.getOrderStatus().equals(Constants.ORDER_STATUS_1)){
+            return AjaxResult.fail("【"+orderId+"】订单号不是未支付状态，请核对后再输入");
+        }
+        this.orderChargeService.paySuccess(orderId,null);
+        return AjaxResult.success();
+    }
+
+    /**
+     * 订单列表里再次支付宝支付
+     */
+    @GetMapping("toPayOrderWithZfb/{orderId}")
+    public AjaxResult toPayOrderWithZfb(@PathVariable String orderId){
+        OrderCharge orderCharge=this.orderChargeService.queryOrderChargeByOrderId(orderId);
+        if(null==orderCharge){
+            return AjaxResult.fail("【"+orderId+"】订单号所在的订单不存在，请核对后再输入");
+        }
+        if(orderCharge.getOrderStatus().equals(Constants.ORDER_STATUS_1)){
+            return AjaxResult.fail("【"+orderId+"】订单号不是未支付状态，请核对后再输入");
+        }
+        //现转支付宝  支付宝转现金的问题
+        String outTradeNo=orderId;
+        String subject="SXT-医疗管理系统支付平台";
+        String totalAmount=orderCharge.getOrderAmount().toString();
+        String undiscountableAmount=null;
+        String body="";
+        String notifyUrl= AlipayConfig.notifyUrl+outTradeNo;
+        Map<String, Object> pay = PayService.pay(outTradeNo, subject, totalAmount, undiscountableAmount, body, notifyUrl);
+        String qrCode = pay.get("qrCode").toString();
+        if(StringUtils.isNotBlank(qrCode)){
+            //创建支付成功
+            Map<String,Object> map=new HashMap<>();
+            map.put("orderId",orderId);
+            map.put("allAmount",totalAmount);
+            map.put("payUrl",qrCode);
+            return AjaxResult.success(map);
+        }else{
+            return AjaxResult.fail(pay.get("msg").toString());
+        }
+    }
+
 }

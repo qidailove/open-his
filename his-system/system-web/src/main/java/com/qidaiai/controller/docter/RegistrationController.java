@@ -1,7 +1,6 @@
 package com.qidaiai.controller.docter;
 
 
-import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.qidaiai.constants.Constants;

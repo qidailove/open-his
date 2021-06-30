@@ -170,4 +170,11 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectListBySql" resultMap="BaseResultMap">
+    select * from his_care_order_item where co_id = #{param1}
+    <if test="param2 != null and param2 != ''">
+      and status = #{param2}
+    </if>
+  </select>
 </mapper>

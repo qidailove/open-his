@@ -47,8 +47,10 @@ public interface RegistrationMapper extends BaseMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(Registration record);
+    int updateById(Registration record);
 
     List<Registration> selectListBySql(@Param(value = "deptId") Long deptId, @Param(value = "subsectionType") String subsectionType, @Param(value = "scheudlingType") String scheudlingType, @Param(value = "regStatus") String regStatus, @Param(value = "date") String date, @Param(value = "userId") Long userId);
+
+    int updateByIdSql(String regId, String completeStatus);
 
 }

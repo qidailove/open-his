@@ -210,7 +210,7 @@
     </set>
     where reg_id = #{regId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.Registration">
+  <update id="updateById" parameterType="com.qidaiai.domain.Registration">
     <!--@mbg.generated-->
     update his_registration
     set patient_id = #{patientId,jdbcType=VARCHAR},
@@ -249,4 +249,8 @@
       </if>
     order by reg_number desc
   </select>
+
+  <delete id="updateByIdSql">
+    update his_registration set reg_status = #{param2} where reg_id = #{param1}
+  </delete>
 </mapper>

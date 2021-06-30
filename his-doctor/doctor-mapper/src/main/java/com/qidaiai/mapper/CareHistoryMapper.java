@@ -2,6 +2,9 @@ package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.CareHistory;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CareHistoryMapper extends BaseMapper {
     /**
@@ -44,5 +47,8 @@ public interface CareHistoryMapper extends BaseMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(CareHistory record);
+    int updateById(CareHistory record);
+
+
+    List<CareHistory> selectListBySql(@Param(value = "patientId") String patientId);
 }

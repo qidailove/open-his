@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.OrderChargeItemMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.OrderChargeItem">
+    <!--@mbg.generated-->
+    <!--@Table his_order_charge_item-->
+    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="co_id" jdbcType="VARCHAR" property="coId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_price" jdbcType="DECIMAL" property="itemPrice" />
+    <result column="item_num" jdbcType="INTEGER" property="itemNum" />
+    <result column="item_amount" jdbcType="DECIMAL" property="itemAmount" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="item_type" jdbcType="CHAR" property="itemType" />
+    <result column="status" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    item_id, co_id, item_name, item_price, item_num, item_amount, order_id, item_type, 
+    `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from his_order_charge_item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from his_order_charge_item
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.OrderChargeItem">
+    <!--@mbg.generated-->
+    insert into his_order_charge_item (item_id, co_id, item_name, 
+      item_price, item_num, item_amount, 
+      order_id, item_type, `status`
+      )
+    values (#{itemId,jdbcType=VARCHAR}, #{coId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
+      #{itemPrice,jdbcType=DECIMAL}, #{itemNum,jdbcType=INTEGER}, #{itemAmount,jdbcType=DECIMAL}, 
+      #{orderId,jdbcType=VARCHAR}, #{itemType,jdbcType=CHAR}, #{status,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.OrderChargeItem">
+    <!--@mbg.generated-->
+    insert into his_order_charge_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="coId != null">
+        co_id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemPrice != null">
+        item_price,
+      </if>
+      <if test="itemNum != null">
+        item_num,
+      </if>
+      <if test="itemAmount != null">
+        item_amount,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="coId != null">
+        #{coId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPrice != null">
+        #{itemPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemNum != null">
+        #{itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="itemAmount != null">
+        #{itemAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.OrderChargeItem">
+    <!--@mbg.generated-->
+    update his_order_charge_item
+    <set>
+      <if test="coId != null">
+        co_id = #{coId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPrice != null">
+        item_price = #{itemPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemNum != null">
+        item_num = #{itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="itemAmount != null">
+        item_amount = #{itemAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.OrderChargeItem">
+    <!--@mbg.generated-->
+    update his_order_charge_item
+    set co_id = #{coId,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_price = #{itemPrice,jdbcType=DECIMAL},
+      item_num = #{itemNum,jdbcType=INTEGER},
+      item_amount = #{itemAmount,jdbcType=DECIMAL},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=CHAR},
+      `status` = #{status,jdbcType=CHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectListBySql" resultMap="BaseResultMap">
+    select * from his_order_charge_item where order_id = #{orderId}
+    </select>
+</mapper>

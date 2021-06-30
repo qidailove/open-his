@@ -44,11 +44,13 @@ public class SchedulingServiceImpl implements SchedulingService {
             Long deptId=schedulingData.getDeptId();
             if(null!=userId){
                 //删除原来的排班
-                QueryWrapper<Scheduling> qw=new QueryWrapper<>();
-                qw.eq(Scheduling.COL_USER_ID,userId);
-                qw.eq(Scheduling.COL_DEPT_ID,deptId);
-                qw.between(Scheduling.COL_SCHEDULING_DAY,beginDate,endDate);
-                this.schedulingMapper.delete(qw);
+//                QueryWrapper<Scheduling> qw=new QueryWrapper<>();
+//                qw.eq(Scheduling.COL_USER_ID,userId);
+//                qw.eq(Scheduling.COL_DEPT_ID,deptId);
+//                qw.between(Scheduling.COL_SCHEDULING_DAY,beginDate,endDate);
+//                this.schedulingMapper.delete(qw);
+                //自定义删除语句
+                this.schedulingMapper.deleteBySql(userId,deptId,beginDate,endDate);
                 //添加新的排班
                 List<String> schedulingDays = initSchedulingDay(date);
                 for (SchedulingFormDto.SchedulingData d : schedulingFormDto.getData()) {

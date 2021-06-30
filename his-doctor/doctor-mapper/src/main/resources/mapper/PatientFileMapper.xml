@@ -224,4 +224,9 @@
     select * from his_patient_file #{ew.customSqlSegment}
   </select>
 
+  <select id="selectByOneSql" resultMap="BaseResultMap">
+    select *
+    from his_patient_file
+    where patient_id = #{patientId};
+  </select>
 </mapper>

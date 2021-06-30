@@ -19,7 +19,6 @@ import com.qidaiai.mapper.CareOrderMapper;
 import com.qidaiai.mapper.RegistrationMapper;
 import com.qidaiai.service.CareService;
 import com.qidaiai.utils.IdGeneratorSnowflake;
-import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,9 +42,11 @@ public class CareServiceImpl implements CareService {
 
     @Override
     public List<CareHistory> queryCareHistoryByPatientId(String patientId) {
-        QueryWrapper<CareHistory> qw = new QueryWrapper<>();
-        qw.eq(CareHistory.COL_PATIENT_ID, patientId);
-        return this.careHistoryMapper.selectList(qw);
+//        QueryWrapper<CareHistory> qw = new QueryWrapper<>();
+//        qw.eq(CareHistory.COL_PATIENT_ID, patientId);
+        //自定义sql语句
+        return this.careHistoryMapper.selectListBySql(patientId);
+//        return this.careHistoryMapper.selectList(qw);
     }
 
     @Override
@@ -70,17 +71,21 @@ public class CareServiceImpl implements CareService {
 
     @Override
     public List<CareOrder> queryCareOrdersByChId(String chId) {
-        QueryWrapper<CareOrder> qw=new QueryWrapper<>();
-        qw.eq(CareOrder.COL_CH_ID,chId);
-        return this.careOrderMapper.selectList(qw);
+//        QueryWrapper<CareOrder> qw=new QueryWrapper<>();
+//        qw.eq(CareOrder.COL_CH_ID,chId);
+//        return this.careOrderMapper.selectList(qw);
+        //自定义语句
+        return this.careOrderMapper.selectListBySql(chId);
     }
 
     @Override
     public List<CareOrderItem> queryCareOrderItemsByCoId(String coId, String status) {
-        QueryWrapper<CareOrderItem> qw=new QueryWrapper<>();
-        qw.eq(CareOrderItem.COL_CO_ID,coId);
-        qw.eq(StringUtils.isNotBlank(status),CareOrderItem.COL_STATUS,status);
-        return this.careOrderItemMapper.selectList(qw);
+//        QueryWrapper<CareOrderItem> qw=new QueryWrapper<>();
+//        qw.eq(CareOrderItem.COL_CO_ID,coId);
+//        qw.eq(StringUtils.isNotBlank(status),CareOrderItem.COL_STATUS,status);
+        //自定义查询语句
+        return this.careOrderItemMapper.selectListBySql(coId,status);
+//        return this.careOrderItemMapper.selectList(qw);
     }
 
     @Override
@@ -148,10 +153,12 @@ public class CareServiceImpl implements CareService {
 
     @Override
     public int visitComplete(String regId) {
-        Registration registration=new Registration();
-        registration.setRegId(regId);
-        registration.setRegStatus(Constants.REG_STATUS_3);
-        return this.registrationMapper.updateById(registration);
+//        Registration registration=new Registration();
+//        registration.setRegId(regId);
+//        registration.setRegStatus(Constants.REG_STATUS_3);
+//        return this.registrationMapper.updateById(registration);
+        //自定义修改就诊状态
+        return this.registrationMapper.updateByIdSql(regId,Constants.REG_STATUS_3);
     }
 
 }

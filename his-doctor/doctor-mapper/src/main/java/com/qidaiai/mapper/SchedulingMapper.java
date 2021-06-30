@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.Scheduling;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface SchedulingMapper extends BaseMapper {
@@ -31,4 +32,7 @@ public interface SchedulingMapper extends BaseMapper {
      * @return
      */
     List<Long> queryHasSchedulingDeptIds(@Param("deptId") Long deptId, @Param("schedulingDay") String schedulingDay, @Param("schedulingType") String schedulingType, @Param("subsectionType") String subsectionType);
+
+
+    void deleteBySql(@Param(value = "userId") Long userId, @Param(value = "deptId") Long deptId, @Param(value = "beginDate") String beginDate, @Param(value = "endDate") String endDate);
 }

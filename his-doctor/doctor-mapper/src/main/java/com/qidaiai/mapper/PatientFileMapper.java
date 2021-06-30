@@ -2,6 +2,7 @@ package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.PatientFile;
+import org.apache.ibatis.annotations.Param;
 
 public interface PatientFileMapper extends BaseMapper {
     /**
@@ -45,4 +46,7 @@ public interface PatientFileMapper extends BaseMapper {
      * @return update count
      */
     int updateByPrimaryKey(PatientFile record);
+
+
+    PatientFile selectByOneSql(@Param(value = "patientId")String patientId);
 }

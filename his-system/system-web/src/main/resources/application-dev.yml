@@ -67,7 +67,7 @@ shiro:
     - /login/doLogin*
     - /login/captcha*
     - /login/logout*
-    - /pay/callback*/**
+    - /pay/callback/**
     #    - /system/upload/*
     - /druid/**
 

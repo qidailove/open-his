@@ -2,6 +2,9 @@ package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.CareOrder;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CareOrderMapper extends BaseMapper {
     /**
@@ -45,4 +48,7 @@ public interface CareOrderMapper extends BaseMapper {
      * @return update count
      */
     int updateByPrimaryKey(CareOrder record);
+
+
+    List<CareOrder> selectListBySql(@Param(value = "chId") String chId);
 }

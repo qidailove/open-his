@@ -55,9 +55,11 @@ public class PatientServiceImpl implements PatientService{
         if (null==patientId){
             return null;
         }
-        QueryWrapper<PatientFile> qw=new QueryWrapper<>();
-        qw.eq(PatientFile.COL_PATIENT_ID,patientId);
-        return (PatientFile) this.patientFileMapper.selectOne(qw);
+//        QueryWrapper<PatientFile> qw=new QueryWrapper<>();
+//        qw.eq(PatientFile.COL_PATIENT_ID,patientId);
+        //自定义查询语句
+        return this.patientFileMapper.selectByOneSql(patientId);
+//        return (PatientFile) this.patientFileMapper.selectOne(qw);
     }
 
     @Override

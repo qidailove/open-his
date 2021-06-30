@@ -1,55 +1,48 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.Patient;
-import com.qidaiai.domain.PatientFile;
-import com.qidaiai.dto.PatientDto;
-import org.apache.ibatis.annotations.Param;
+import com.qidaiai.domain.OrderCharge;
 
-import java.util.List;
-
-public interface PatientMapper extends BaseMapper {
+public interface OrderChargeMapper extends BaseMapper {
     /**
      * delete by primary key
-     * @param patientId primaryKey
+     * @param orderId primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(String patientId);
+    int deleteByPrimaryKey(String orderId);
 
     /**
      * insert record to table
      * @param record the record
      * @return insert count
      */
-    int insert(Patient record);
+    int insert(OrderCharge record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(Patient record);
+    int insertSelective(OrderCharge record);
 
     /**
      * select by primary key
-     * @param patientId primary key
+     * @param orderId primary key
      * @return object by primary key
      */
-    Patient selectById(String patientId);
+    OrderCharge selectById(String orderId);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(Patient record);
+    int updateByPrimaryKeySelective(OrderCharge record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(Patient record);
-
-    List<Patient> selectPageBysql(@Param(value = "patient") Patient patient);
+    int updateByPrimaryKey(OrderCharge record);
 }

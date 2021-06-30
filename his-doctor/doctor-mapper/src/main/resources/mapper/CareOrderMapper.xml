@@ -170,4 +170,8 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where co_id = #{coId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectListBySql" resultMap="BaseResultMap">
+    select * from his_care_order where ch_id = #{chId}
+  </select>
 </mapper>
