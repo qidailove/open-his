@@ -21,7 +21,7 @@ public interface OrderChargeService {
      * @param orderId
      * @param payPlatformId 平台交易ID 如果是现金，则为空
      */
-    void paySuccess(String orderId, String payPlatformId);
+    void paySuccess(String orderId, String payPlatformId, String payType);
 
     /**
      * 根据订单ID查询订单信息

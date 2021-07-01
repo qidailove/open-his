@@ -101,7 +101,7 @@ public class OrderChargeController extends BaseController {
         orderChargeFromDto.getOrderChargeDto().setOrderId(orderId);
         this.orderChargeService.saveOrderAndItems(orderChargeFromDto);
         //2,因为是现金支付，所有直接更新详情状态
-        this.orderChargeService.paySuccess(orderId,null);
+        this.orderChargeService.paySuccess(orderId,null,Constants.PAY_TYPE_0);
         return AjaxResult.success("创建订单并现金支付成功");
     }
 
@@ -150,9 +150,9 @@ public class OrderChargeController extends BaseController {
         if(null==orderCharge){
             return AjaxResult.fail("【"+orderId+"】订单号所在的订单不存在，请核对后再输入");
         }
-        if(!orderCharge.getPayType().equals(Constants.PAY_TYPE_1)){
-            return AjaxResult.fail("【"+orderId+"】订单号所在的订单不是支付宝支付的订单，请核对后再输入");
-        }
+//        if(!orderCharge.getPayType().equals(Constants.PAY_TYPE_1)){
+//            return AjaxResult.fail("【"+orderId+"】订单号所在的订单不是支付宝支付的订单，请核对后再输入");
+//        }
         return  AjaxResult.success(orderCharge);
     }
 
@@ -187,7 +187,7 @@ public class OrderChargeController extends BaseController {
         if(orderCharge.getOrderStatus().equals(Constants.ORDER_STATUS_1)){
             return AjaxResult.fail("【"+orderId+"】订单号不是未支付状态，请核对后再输入");
         }
-        this.orderChargeService.paySuccess(orderId,null);
+        this.orderChargeService.paySuccess(orderId,null,Constants.PAY_TYPE_0);
         return AjaxResult.success();
     }
 

@@ -66,13 +66,16 @@ public class OrderChargeServiceImpl implements OrderChargeService {
      * 支付成功的回调
      * @param orderId 支付订单ID
      * @param payPlatformId 平台交易ID 如果是现金，则为空
+     * @param payType 支付类型字典
      */
     @Override
-    public void paySuccess(String orderId, String payPlatformId) {
+    public void paySuccess(String orderId, String payPlatformId, String payType) {
         //根据支付订单ID查询支付订单
         OrderCharge orderCharge = this.orderChargeMapper.selectById(orderId);
         //设置平台交易编号
         orderCharge.setPayPlatformId(payPlatformId);
+        //设置支付类型
+        orderCharge.setPayType(payType);
         //设置支付时间
         orderCharge.setPayTime(DateUtil.date());
         //修改订单状态

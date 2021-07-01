@@ -5,6 +5,7 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.qidaiai.config.pay.AlipayConfig;
+import com.qidaiai.constants.Constants;
 import com.qidaiai.service.OrderChargeService;
 import lombok.extern.log4j.Log4j2;
 import org.apache.dubbo.config.annotation.Reference;
@@ -49,7 +50,7 @@ public class PayController {
                     //说明支付
                     String trade_no = parameterMap.get("trade_no");
                     System.out.println("收费成功，平台ID" + trade_no);
-                    orderChargeService.paySuccess(orderId,trade_no);
+                    orderChargeService.paySuccess(orderId,trade_no, Constants.PAY_TYPE_1);
                 }
                 System.out.println(JSON.toJSON(parameterMap));
             } catch (AlipayApiException e) {
