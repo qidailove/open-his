@@ -77,4 +77,10 @@ public interface CareService {
      * @return
      */
     int visitComplete(String regId);
+
+    /**
+     * 发药
+     * @param itemIds
+     */
+    String doMedicine(List<String> itemIds);
 }

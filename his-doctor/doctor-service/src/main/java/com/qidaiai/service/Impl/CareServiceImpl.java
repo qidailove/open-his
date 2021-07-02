@@ -5,19 +5,14 @@ import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.qidaiai.constants.Constants;
-import com.qidaiai.domain.CareHistory;
-import com.qidaiai.domain.CareOrder;
-import com.qidaiai.domain.CareOrderItem;
-import com.qidaiai.domain.Registration;
+import com.qidaiai.domain.*;
 import com.qidaiai.dto.CareHistoryDto;
 import com.qidaiai.dto.CareOrderDto;
 import com.qidaiai.dto.CareOrderFormDto;
 import com.qidaiai.dto.CareOrderItemDto;
-import com.qidaiai.mapper.CareHistoryMapper;
-import com.qidaiai.mapper.CareOrderItemMapper;
-import com.qidaiai.mapper.CareOrderMapper;
-import com.qidaiai.mapper.RegistrationMapper;
+import com.qidaiai.mapper.*;
 import com.qidaiai.service.CareService;
+import com.qidaiai.service.impl.MedicinesService;
 import com.qidaiai.utils.IdGeneratorSnowflake;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +34,12 @@ public class CareServiceImpl implements CareService {
 
     @Autowired
     private RegistrationMapper registrationMapper;
+
+    @Autowired
+    private MedicinesService medicinesService;
+
+    @Autowired
+    private OrderChargeItemMapper orderChargeItemMapper;
 
     @Override
     public List<CareHistory> queryCareHistoryByPatientId(String patientId) {
@@ -160,5 +161,47 @@ public class CareServiceImpl implements CareService {
         //自定义修改就诊状态
         return this.registrationMapper.updateByIdSql(regId,Constants.REG_STATUS_3);
     }
+
+    /**
+     * 发药
+     * 思路
+     * 1，根据详情ID查询处方项目
+     * 2，扣减库存(如果库存够就扣减 返回受影响的行数，如果不够就返回0)
+     * 3，如果返回0 说是库存不够，停止发药
+     * 4，如果返回>0 更新处方详情   支持详情的状态 为3
+     * @param itemIds
+     * @return
+     */
+    @Override
+    public String doMedicine(List<String> itemIds) {
+        //根据详情ID查询处方详情
+        QueryWrapper<CareOrderItem> qw=new QueryWrapper<>();
+        qw.in(CareOrderItem.COL_ITEM_ID,itemIds);
+        List<CareOrderItem> careOrderItems = this.careOrderItemMapper.selectList(qw);
+        StringBuffer sb=new StringBuffer();
+        for (CareOrderItem careOrderItem : careOrderItems) {
+            //库存扣减
+            int i=this.medicinesService.deductionMedicinesStorage(Long.valueOf(careOrderItem.getItemRefId()),careOrderItem.getNum().longValue());
+            if(i>0){//说明库存够
+                //更新处方详情状态
+                careOrderItem.setStatus(Constants.ORDER_DETAILS_STATUS_3);//已完成
+                this.careOrderItemMapper.updateById(careOrderItem);
+                //更新收费详情状态
+                OrderChargeItem orderChargeItem=new OrderChargeItem();
+                orderChargeItem.setItemId(careOrderItem.getItemId());
+                orderChargeItem.setStatus(Constants.ORDER_DETAILS_STATUS_3);
+                this.orderChargeItemMapper.updateById(orderChargeItem);
+            }else{
+                sb.append("【"+careOrderItem.getItemName()+"】发药失败\n");
+            }
+        }
+        if(StringUtils.isBlank(sb.toString())){
+            return null;
+        }else{
+            sb.append("原因：库存不足");
+            return sb.toString();
+        }
+    }
+
 
 }

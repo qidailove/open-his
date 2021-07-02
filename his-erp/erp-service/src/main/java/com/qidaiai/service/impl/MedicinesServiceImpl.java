@@ -12,6 +12,7 @@ import com.qidaiai.vo.DataGridView;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -83,4 +84,9 @@ public class MedicinesServiceImpl implements MedicinesService{
         return this.medicinesMapper.updateById(medicines);
     }
 
+    @Override
+    @Transactional
+    public int deductionMedicinesStorage(Long medicinesId, long num) {
+        return this.medicinesMapper.deductionMedicinesStorage(medicinesId,num);
+    }
 }

@@ -2,6 +2,7 @@ package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qidaiai.domain.Medicines;
+import org.apache.ibatis.annotations.Param;
 
 public interface MedicinesMapper extends BaseMapper {
     /**
@@ -45,4 +46,13 @@ public interface MedicinesMapper extends BaseMapper {
      * @return update count
      */
     int updateById(Medicines record);
+
+    /**
+     * 扣减库存
+     *
+     * @param medicinesId
+     * @param num
+     * @return
+     */
+    int deductionMedicinesStorage(@Param("medicinesId") Long medicinesId, @Param("num") Long num);
 }

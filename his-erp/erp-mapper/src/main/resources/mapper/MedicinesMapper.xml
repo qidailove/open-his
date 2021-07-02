@@ -251,4 +251,7 @@
     select * from stock_medicines ${ew.customSqlSegment}
   </select>
 
+  <delete id="deductionMedicinesStorage">
+    update stock_medicines set medicines_stock_num = (medicines_stock_num = #{num}) where medicines_id = #{medicinesId} and medicines_stock_num > #{num}
+    </delete>
 </mapper>
