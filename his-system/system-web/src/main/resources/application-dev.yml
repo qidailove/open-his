@@ -46,11 +46,6 @@ spring:
 logging:
   level:
     com.qidaiai.mapper: debug
-
-
-
-
-
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss
 

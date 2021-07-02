@@ -14,6 +14,7 @@ import com.qidaiai.mapper.*;
 import com.qidaiai.service.CareService;
 import com.qidaiai.service.impl.MedicinesService;
 import com.qidaiai.utils.IdGeneratorSnowflake;
+import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,7 +36,7 @@ public class CareServiceImpl implements CareService {
     @Autowired
     private RegistrationMapper registrationMapper;
 
-    @Autowired
+    @Reference
     private MedicinesService medicinesService;
 
     @Autowired

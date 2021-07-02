@@ -186,4 +186,11 @@
       #{check_item_id}
     </foreach>
   </delete>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select *
+    from sys_check_item
+    ${ew.customSqlSegment};
+  </select>
+
 </mapper>

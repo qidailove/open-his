@@ -53,6 +53,10 @@ mybatis-plus:
     db-config:
       id-type: auto
 
+logging:
+  level:
+    com.qidaiai.mapper: debug
+
 #dubbo配置
 dubbo:
   application:

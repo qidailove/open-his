@@ -37,6 +37,7 @@ public class MedicinesController extends BaseController {
         DataGridView gridView = this.medicinesService.listMedicinesPage(medicinesDto);
         return AjaxResult.success("查询成功",gridView.getData(),gridView.getTotal());
     }
+
     /**
      * 添加
      */
