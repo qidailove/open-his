@@ -1,11 +1,11 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.OrderChargeItem;
+import com.qidaiai.domain.OrderBackfeeItem;
 
 import java.util.List;
 
-public interface OrderChargeItemMapper extends BaseMapper {
+public interface OrderBackfeeItemMapper extends BaseMapper {
     /**
      * delete by primary key
      * @param itemId primaryKey
@@ -18,36 +18,35 @@ public interface OrderChargeItemMapper extends BaseMapper {
      * @param record the record
      * @return insert count
      */
-    int insert(OrderChargeItem record);
+    int insert(OrderBackfeeItem record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(OrderChargeItem record);
+    int insertSelective(OrderBackfeeItem record);
 
     /**
      * select by primary key
      * @param itemId primary key
      * @return object by primary key
      */
-    OrderChargeItem selectById(String itemId);
+    OrderBackfeeItem selectByPrimaryKey(String itemId);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(OrderChargeItem record);
+    int updateByPrimaryKeySelective(OrderBackfeeItem record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(OrderChargeItem record);
+    int updateByPrimaryKey(OrderBackfeeItem record);
 
-
-    List<OrderChargeItem> selectListBySql(String orderId);
+    List<OrderBackfeeItem> selectById(String backId);
 }

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.OrderBackfeeMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.OrderBackfee">
+    <!--@mbg.generated-->
+    <!--@Table his_order_backfee-->
+    <id column="back_id" jdbcType="VARCHAR" property="backId" />
+    <result column="back_amount" jdbcType="DECIMAL" property="backAmount" />
+    <result column="ch_id" jdbcType="VARCHAR" property="chId" />
+    <result column="reg_id" jdbcType="VARCHAR" property="regId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="back_status" jdbcType="CHAR" property="backStatus" />
+    <result column="back_type" jdbcType="CHAR" property="backType" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="back_platform_id" jdbcType="VARCHAR" property="backPlatformId" />
+    <result column="back_time" jdbcType="TIMESTAMP" property="backTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    back_id, back_amount, ch_id, reg_id, patient_name, back_status, back_type, order_id, 
+    back_platform_id, back_time, create_time, update_time, create_by, update_by
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from his_order_backfee
+    where back_id = #{backId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from his_order_backfee
+    where back_id = #{backId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.OrderBackfee">
+    <!--@mbg.generated-->
+    insert into his_order_backfee (back_id, back_amount, ch_id, 
+      reg_id, patient_name, back_status, 
+      back_type, order_id, back_platform_id, 
+      back_time, create_time, update_time, 
+      create_by, update_by)
+    values (#{backId,jdbcType=VARCHAR}, #{backAmount,jdbcType=DECIMAL}, #{chId,jdbcType=VARCHAR}, 
+      #{regId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{backStatus,jdbcType=CHAR}, 
+      #{backType,jdbcType=CHAR}, #{orderId,jdbcType=VARCHAR}, #{backPlatformId,jdbcType=VARCHAR}, 
+      #{backTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.OrderBackfee">
+    <!--@mbg.generated-->
+    insert into his_order_backfee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="backId != null">
+        back_id,
+      </if>
+      <if test="backAmount != null">
+        back_amount,
+      </if>
+      <if test="chId != null">
+        ch_id,
+      </if>
+      <if test="regId != null">
+        reg_id,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="backStatus != null">
+        back_status,
+      </if>
+      <if test="backType != null">
+        back_type,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="backPlatformId != null">
+        back_platform_id,
+      </if>
+      <if test="backTime != null">
+        back_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="backId != null">
+        #{backId,jdbcType=VARCHAR},
+      </if>
+      <if test="backAmount != null">
+        #{backAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="chId != null">
+        #{chId,jdbcType=VARCHAR},
+      </if>
+      <if test="regId != null">
+        #{regId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="backStatus != null">
+        #{backStatus,jdbcType=CHAR},
+      </if>
+      <if test="backType != null">
+        #{backType,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="backPlatformId != null">
+        #{backPlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="backTime != null">
+        #{backTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.OrderBackfee">
+    <!--@mbg.generated-->
+    update his_order_backfee
+    <set>
+      <if test="backAmount != null">
+        back_amount = #{backAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="chId != null">
+        ch_id = #{chId,jdbcType=VARCHAR},
+      </if>
+      <if test="regId != null">
+        reg_id = #{regId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="backStatus != null">
+        back_status = #{backStatus,jdbcType=CHAR},
+      </if>
+      <if test="backType != null">
+        back_type = #{backType,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="backPlatformId != null">
+        back_platform_id = #{backPlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="backTime != null">
+        back_time = #{backTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where back_id = #{backId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.OrderBackfee">
+    <!--@mbg.generated-->
+    update his_order_backfee
+    set back_amount = #{backAmount,jdbcType=DECIMAL},
+      ch_id = #{chId,jdbcType=VARCHAR},
+      reg_id = #{regId,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      back_status = #{backStatus,jdbcType=CHAR},
+      back_type = #{backType,jdbcType=CHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      back_platform_id = #{backPlatformId,jdbcType=VARCHAR},
+      back_time = #{backTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where back_id = #{backId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from his_order_backfee ${ew.customSqlSegment}
+  </select>
+
+</mapper>

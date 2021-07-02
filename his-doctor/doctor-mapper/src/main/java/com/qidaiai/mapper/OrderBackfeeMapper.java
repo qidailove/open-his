@@ -1,53 +1,48 @@
 package com.qidaiai.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qidaiai.domain.OrderChargeItem;
+import com.qidaiai.domain.OrderBackfee;
 
-import java.util.List;
-
-public interface OrderChargeItemMapper extends BaseMapper {
+public interface OrderBackfeeMapper extends BaseMapper {
     /**
      * delete by primary key
-     * @param itemId primaryKey
+     * @param backId primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(String itemId);
+    int deleteByPrimaryKey(String backId);
 
     /**
      * insert record to table
      * @param record the record
      * @return insert count
      */
-    int insert(OrderChargeItem record);
+    int insert(OrderBackfee record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(OrderChargeItem record);
+    int insertSelective(OrderBackfee record);
 
     /**
      * select by primary key
-     * @param itemId primary key
+     * @param backId primary key
      * @return object by primary key
      */
-    OrderChargeItem selectById(String itemId);
+    OrderBackfee selectById(String backId);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(OrderChargeItem record);
+    int updateByPrimaryKeySelective(OrderBackfee record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(OrderChargeItem record);
-
-
-    List<OrderChargeItem> selectListBySql(String orderId);
+    int updateByPrimaryKey(OrderBackfee record);
 }

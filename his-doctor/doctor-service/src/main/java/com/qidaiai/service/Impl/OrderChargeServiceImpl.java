@@ -129,4 +129,9 @@ public class OrderChargeServiceImpl implements OrderChargeService {
         //自定义查询语句
         return this.orderChargeItemMapper.selectListBySql(orderId);
     }
+
+    @Override
+    public OrderChargeItem queryOrderChargeItemByItemId(String itemId) {
+        return this.orderChargeItemMapper.selectById(itemId);
+    }
 }

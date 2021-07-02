@@ -3,16 +3,19 @@ package com.qidaiai.controller.docter;
 import cn.hutool.core.bean.BeanUtil;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.qidaiai.constants.Constants;
-import com.qidaiai.domain.CareHistory;
-import com.qidaiai.domain.CareOrder;
-import com.qidaiai.domain.CareOrderItem;
+import com.qidaiai.domain.*;
+import com.qidaiai.dto.OrderBackfeeDto;
+import com.qidaiai.dto.OrderBackfeeFormDto;
 import com.qidaiai.service.CareService;
+import com.qidaiai.service.OrderBackfeeService;
+import com.qidaiai.service.OrderChargeService;
+import com.qidaiai.utils.IdGeneratorSnowflake;
+import com.qidaiai.utils.ShiroSecurityUtils;
 import com.qidaiai.vo.AjaxResult;
+import com.qidaiai.vo.DataGridView;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -28,6 +31,12 @@ public class OrderBackfeeController {
 
     @Reference
     private CareService careService;
+
+    @Reference
+    private OrderChargeService orderChargeService;
+
+    @Reference
+    private OrderBackfeeService orderBackfeeService;
 
     /**
      * 根据挂号ID查询未支付的处方信息及详情
@@ -78,4 +87,48 @@ public class OrderBackfeeController {
             return AjaxResult.success(res);
         }
     }
+
+    /**
+     * 创建现金退费订单
+     */
+    @PostMapping("createOrderBackfeeWithCash")
+//    @HystrixCommand
+    public AjaxResult createOrderBackfeeWithCash(@RequestBody @Validated OrderBackfeeFormDto orderBackfeeFormDto){
+        //保存订单
+        orderBackfeeFormDto.getOrderBackfeeDto().setBackType(Constants.PAY_TYPE_0);
+        orderBackfeeFormDto.setSimpleUser(ShiroSecurityUtils.getCurrentSimpleUser());
+        //生成退费单号
+        String backId= IdGeneratorSnowflake.generatorIdWithProfix(Constants.ID_PROFIX_ODB);
+        orderBackfeeFormDto.getOrderBackfeeDto().setBackId(backId);
+        //找到当前退费单之前的收费单的ID
+        String itemId = orderBackfeeFormDto.getOrderBackfeeItemDtoList().get(0).getItemId();
+        OrderChargeItem orderChargeItem=this.orderChargeService.queryOrderChargeItemByItemId(itemId);
+        orderBackfeeFormDto.getOrderBackfeeDto().setOrderId(orderChargeItem.getOrderId());
+        this.orderBackfeeService.saveOrderAndItems(orderBackfeeFormDto);
+        //因为是现金退费，所以直接更新详情状态
+        this.orderBackfeeService.backSuccess(backId,null,Constants.PAY_TYPE_0);
+        return AjaxResult.success("创建现在退费订单成功");
+
+    }
+
+    /**
+     * 分页查询所有退费单
+     */
+    @GetMapping("queryAllOrderBackfeeForPage")
+    @HystrixCommand
+    public AjaxResult queryAllOrderChargeForPage(OrderBackfeeDto orderBackfeeDto){
+        DataGridView dataGridView=this.orderBackfeeService.queryAllOrderBackfeeForPage(orderBackfeeDto);
+        return AjaxResult.success("查询成功",dataGridView.getData(),dataGridView.getTotal());
+    }
+
+    /**
+     * 根据退费单的ID查询退费详情信息
+     */
+    @GetMapping("queryOrderBackfeeItemByBackId/{backId}")
+    @HystrixCommand
+    public AjaxResult queryOrderBackfeeItemByBackId(@PathVariable String backId){
+        List<OrderBackfeeItem> list=this.orderBackfeeService.queryrderBackfeeItemByBackId(backId);
+        return AjaxResult.success(list);
+    }
+
 }
