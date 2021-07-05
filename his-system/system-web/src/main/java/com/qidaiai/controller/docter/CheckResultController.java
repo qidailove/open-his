@@ -160,4 +160,14 @@ public class CheckResultController extends BaseController {
         return AjaxResult.toAjax(this.checkResultService.completeCheckResult(checkResultFormDto));
     }
 
+    /**
+     * 查询所有检查中的和检查完成了的项目
+     */
+    @PostMapping("queryAllCheckResultForPage")
+//    @HystrixCommand
+    public AjaxResult queryAllCheckResultForPage(@RequestBody CheckResultDto checkResultDto){
+        DataGridView dataGridView=this.checkResultService.queryAllCheckResultForPage(checkResultDto);
+        return AjaxResult.success("查询成功",dataGridView.getData(),dataGridView.getTotal());
+    }
+
 }
