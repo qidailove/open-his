@@ -177,4 +177,11 @@
       and status = #{param2}
     </if>
   </select>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select *
+    from his_care_order_item
+    ${ew.customSqlSegment};
+  </select>
+
 </mapper>

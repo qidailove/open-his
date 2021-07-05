@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidaiai.mapper.CheckResultMapper">
+  <resultMap id="BaseResultMap" type="com.qidaiai.domain.CheckResult">
+    <!--@mbg.generated-->
+    <!--@Table his_check_result-->
+    <id column="coc_id" jdbcType="VARCHAR" property="cocId" />
+    <result column="check_item_id" jdbcType="INTEGER" property="checkItemId" />
+    <result column="check_item_name" jdbcType="VARCHAR" property="checkItemName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="result_msg" jdbcType="VARCHAR" property="resultMsg" />
+    <result column="result_img" jdbcType="VARCHAR" property="resultImg" />
+    <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="result_status" jdbcType="CHAR" property="resultStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    coc_id, check_item_id, check_item_name, price, result_msg, result_img, patient_id, 
+    patient_name, result_status, create_time, update_time, create_by, update_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from his_check_result
+    where coc_id = #{cocId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from his_check_result
+    where coc_id = #{cocId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qidaiai.domain.CheckResult">
+    <!--@mbg.generated-->
+    insert into his_check_result (coc_id, check_item_id, check_item_name, 
+      price, result_msg, result_img, 
+      patient_id, patient_name, result_status, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{cocId,jdbcType=VARCHAR}, #{checkItemId,jdbcType=INTEGER}, #{checkItemName,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{resultMsg,jdbcType=VARCHAR}, #{resultImg,jdbcType=VARCHAR}, 
+      #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{resultStatus,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qidaiai.domain.CheckResult">
+    <!--@mbg.generated-->
+    insert into his_check_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cocId != null">
+        coc_id,
+      </if>
+      <if test="checkItemId != null">
+        check_item_id,
+      </if>
+      <if test="checkItemName != null">
+        check_item_name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="resultMsg != null">
+        result_msg,
+      </if>
+      <if test="resultImg != null">
+        result_img,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="resultStatus != null">
+        result_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cocId != null">
+        #{cocId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkItemId != null">
+        #{checkItemId,jdbcType=INTEGER},
+      </if>
+      <if test="checkItemName != null">
+        #{checkItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="resultMsg != null">
+        #{resultMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="resultImg != null">
+        #{resultImg,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="resultStatus != null">
+        #{resultStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qidaiai.domain.CheckResult">
+    <!--@mbg.generated-->
+    update his_check_result
+    <set>
+      <if test="checkItemId != null">
+        check_item_id = #{checkItemId,jdbcType=INTEGER},
+      </if>
+      <if test="checkItemName != null">
+        check_item_name = #{checkItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="resultMsg != null">
+        result_msg = #{resultMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="resultImg != null">
+        result_img = #{resultImg,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="resultStatus != null">
+        result_status = #{resultStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coc_id = #{cocId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CheckResult">
+    <!--@mbg.generated-->
+    update his_check_result
+    set check_item_id = #{checkItemId,jdbcType=INTEGER},
+      check_item_name = #{checkItemName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      result_msg = #{resultMsg,jdbcType=VARCHAR},
+      result_img = #{resultImg,jdbcType=VARCHAR},
+      patient_id = #{patientId,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      result_status = #{resultStatus,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where coc_id = #{cocId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from his_check_result ${ew.customSqlSegment}
+  </select>
+
+</mapper>
