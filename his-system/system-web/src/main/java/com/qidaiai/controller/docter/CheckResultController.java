@@ -111,7 +111,7 @@ public class CheckResultController extends BaseController {
      * 开始检查
      */
     @PostMapping("startCheck/{itemId}")
-    @HystrixCommand
+//    @HystrixCommand
     public AjaxResult startCheck(@PathVariable String itemId){
         CareOrderItem careOrderItem = this.careService.queryCareOrderItemByItemId(itemId);
         if(careOrderItem==null){

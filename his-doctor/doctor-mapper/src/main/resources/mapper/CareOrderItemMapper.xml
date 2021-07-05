@@ -155,7 +155,7 @@
     </set>
     where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CareOrderItem">
+  <update id="updateById" parameterType="com.qidaiai.domain.CareOrderItem">
     <!--@mbg.generated-->
     update his_care_order_item
     set co_id = #{coId,jdbcType=VARCHAR},

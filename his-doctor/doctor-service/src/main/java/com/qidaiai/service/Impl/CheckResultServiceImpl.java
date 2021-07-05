@@ -18,6 +18,7 @@ import com.qidaiai.vo.DataGridView;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service(methods = {@Method(name = "saveCheckResult",retries = 1)})
 public class CheckResultServiceImpl implements CheckResultService {
@@ -26,25 +27,26 @@ public class CheckResultServiceImpl implements CheckResultService {
     private CheckResultMapper checkResultMapper;
 
     @Autowired
-    private CareOrderItemMapper careOrderItemMapper;
-
-    @Autowired
     private OrderChargeItemMapper orderChargeItemMapper;
 
+    @Autowired
+    private CareOrderItemMapper careOrderItemMapper;
+
     @Override
+    @Transactional
     public int saveCheckResult(CheckResult checkResult) {
-        //保存检查项目
-        int i=checkResultMapper.insert(checkResult);
-        //更新收费详情的状态
+        //直接保存
+        int i= checkResultMapper.insert(checkResult);
+        //更新收费详情状态
         OrderChargeItem orderChargeItem=new OrderChargeItem();
         orderChargeItem.setItemId(checkResult.getItemId());
         orderChargeItem.setStatus(Constants.ORDER_DETAILS_STATUS_3);//已完成
-        this.orderChargeItemMapper.updateById(orderChargeItem);
-        //更新处方详情的状态
+        orderChargeItemMapper.updateById(orderChargeItem);
+        //更新处方详情状态
         CareOrderItem careOrderItem=new CareOrderItem();
         careOrderItem.setItemId(checkResult.getItemId());
-        careOrderItem.setStatus(Constants.ORDER_DETAILS_STATUS_3);//已完成
-        this.careOrderItemMapper.updateById(careOrderItem);
+        careOrderItem.setStatus(Constants.ORDER_DETAILS_STATUS_3);
+        careOrderItemMapper.updateById(careOrderItem);
         return i;
     }
 
@@ -53,8 +55,8 @@ public class CheckResultServiceImpl implements CheckResultService {
         Page<CheckResult> page=new Page<>(checkResultDto.getPageNum(),checkResultDto.getPageSize());
         QueryWrapper<CheckResult> qw=new QueryWrapper<>();
         qw.in(checkResultDto.getCheckItemIds().size()>0,CheckResult.COL_CHECK_ITEM_ID,checkResultDto.getCheckItemIds());
-        qw.like(StringUtils.isNotBlank(checkResultDto.getPatientName()),CheckResult.COL_PATIENT_NAME,checkResultDto.getPatientName());
         qw.like(StringUtils.isNotBlank(checkResultDto.getRegId()),CheckResult.COL_REG_ID,checkResultDto.getRegId());
+        qw.like(StringUtils.isNotBlank(checkResultDto.getPatientName()),CheckResult.COL_PATIENT_NAME,checkResultDto.getPatientName());
         qw.eq(StringUtils.isNotBlank(checkResultDto.getResultStatus()),CheckResult.COL_RESULT_STATUS,checkResultDto.getResultStatus());
         this.checkResultMapper.selectPage(page,qw);
         return new DataGridView(page.getTotal(),page.getRecords());

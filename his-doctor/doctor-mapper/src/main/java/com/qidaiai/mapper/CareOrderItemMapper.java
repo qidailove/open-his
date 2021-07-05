@@ -46,7 +46,7 @@ public interface CareOrderItemMapper extends BaseMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(CareOrderItem record);
+    int updateById(CareOrderItem record);
 
 
     List<CareOrderItem> selectListBySql(String coId, String status);

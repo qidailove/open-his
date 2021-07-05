@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.qidaiai.domain.CheckResult">
     <!--@mbg.generated-->
     <!--@Table his_check_result-->
-    <id column="coc_id" jdbcType="VARCHAR" property="cocId" />
+    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
     <result column="check_item_id" jdbcType="INTEGER" property="checkItemId" />
     <result column="check_item_name" jdbcType="VARCHAR" property="checkItemName" />
     <result column="price" jdbcType="DECIMAL" property="price" />
@@ -20,40 +20,40 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    coc_id, check_item_id, check_item_name, price, result_msg, result_img, patient_id, 
+    item_id, check_item_id, check_item_name, price, result_msg, result_img, patient_id,
     patient_name, result_status, create_time, update_time, create_by, update_by
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from his_check_result
-    where coc_id = #{cocId,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--@mbg.generated-->
     delete from his_check_result
-    where coc_id = #{cocId,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.qidaiai.domain.CheckResult">
     <!--@mbg.generated-->
-    insert into his_check_result (coc_id, check_item_id, check_item_name, 
-      price, result_msg, result_img, 
-      patient_id, patient_name, result_status, 
-      create_time, update_time, create_by, 
-      update_by)
-    values (#{cocId,jdbcType=VARCHAR}, #{checkItemId,jdbcType=INTEGER}, #{checkItemName,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DECIMAL}, #{resultMsg,jdbcType=VARCHAR}, #{resultImg,jdbcType=VARCHAR}, 
-      #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{resultStatus,jdbcType=CHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
-      #{updateBy,jdbcType=VARCHAR})
+    insert into his_check_result (item_id, check_item_id, check_item_name,
+    price, result_msg, result_img,
+    patient_id, patient_name, result_status,
+    create_time, update_time, create_by,
+    update_by)
+    values (#{itemId,jdbcType=VARCHAR}, #{checkItemId,jdbcType=INTEGER}, #{checkItemName,jdbcType=VARCHAR},
+    #{price,jdbcType=DECIMAL}, #{resultMsg,jdbcType=VARCHAR}, #{resultImg,jdbcType=VARCHAR},
+    #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{resultStatus,jdbcType=CHAR},
+    #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR},
+    #{updateBy,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qidaiai.domain.CheckResult">
     <!--@mbg.generated-->
     insert into his_check_result
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cocId != null">
-        coc_id,
+      <if test="itemId != null">
+        item_id,
       </if>
       <if test="checkItemId != null">
         check_item_id,
@@ -93,8 +93,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cocId != null">
-        #{cocId,jdbcType=VARCHAR},
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
       </if>
       <if test="checkItemId != null">
         #{checkItemId,jdbcType=INTEGER},
@@ -175,24 +175,24 @@
         update_by = #{updateBy,jdbcType=VARCHAR},
       </if>
     </set>
-    where coc_id = #{cocId,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CheckResult">
     <!--@mbg.generated-->
     update his_check_result
     set check_item_id = #{checkItemId,jdbcType=INTEGER},
-      check_item_name = #{checkItemName,jdbcType=VARCHAR},
-      price = #{price,jdbcType=DECIMAL},
-      result_msg = #{resultMsg,jdbcType=VARCHAR},
-      result_img = #{resultImg,jdbcType=VARCHAR},
-      patient_id = #{patientId,jdbcType=VARCHAR},
-      patient_name = #{patientName,jdbcType=VARCHAR},
-      result_status = #{resultStatus,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_by = #{createBy,jdbcType=VARCHAR},
-      update_by = #{updateBy,jdbcType=VARCHAR}
-    where coc_id = #{cocId,jdbcType=VARCHAR}
+    check_item_name = #{checkItemName,jdbcType=VARCHAR},
+    price = #{price,jdbcType=DECIMAL},
+    result_msg = #{resultMsg,jdbcType=VARCHAR},
+    result_img = #{resultImg,jdbcType=VARCHAR},
+    patient_id = #{patientId,jdbcType=VARCHAR},
+    patient_name = #{patientName,jdbcType=VARCHAR},
+    result_status = #{resultStatus,jdbcType=CHAR},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    update_time = #{updateTime,jdbcType=TIMESTAMP},
+    create_by = #{createBy,jdbcType=VARCHAR},
+    update_by = #{updateBy,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
 
   <select id="selectPage" resultMap="BaseResultMap">

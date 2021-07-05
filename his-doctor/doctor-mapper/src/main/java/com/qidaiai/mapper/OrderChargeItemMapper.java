@@ -46,7 +46,7 @@ public interface OrderChargeItemMapper extends BaseMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(OrderChargeItem record);
+    int updateById(OrderChargeItem record);
 
 
     List<OrderChargeItem> selectListBySql(String orderId);
