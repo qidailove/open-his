@@ -44,6 +44,13 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!--统计statistics-api-->
+        <dependency>
+            <groupId>com.qidaiai</groupId>
+            <artifactId>statistics-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
