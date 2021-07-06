@@ -177,7 +177,7 @@
     </set>
     where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qidaiai.domain.CheckResult">
+  <update id="updateById" parameterType="com.qidaiai.domain.CheckResult">
     <!--@mbg.generated-->
     update his_check_result
     set check_item_id = #{checkItemId,jdbcType=INTEGER},

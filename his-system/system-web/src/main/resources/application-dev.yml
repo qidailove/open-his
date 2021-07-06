@@ -97,12 +97,12 @@ fdfs:
     height: 100
   tracker-list:    # tracker服务配置地址列表
     - 47.107.49.181:22122
-  upload:
-    base-url: 47.107.49.181:8888
-    allow-types:
-      - image/jpeg
-      - image/png
-      - image/bmp
+upload:
+  base-url: 47.107.49.181:8888
+  allow-types:
+    - image/jpeg
+    - image/png
+    - image/bmp
 
 #dubbo配置
 dubbo:

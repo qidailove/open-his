@@ -44,5 +44,5 @@ public interface CheckResultMapper extends BaseMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(CheckResult record);
+    int updateById(CheckResult record);
 }
