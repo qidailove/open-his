@@ -1,4 +1,7 @@
 
+server:
+  port: 8083
+
 #spring的配置
 spring:
   #数据源配置

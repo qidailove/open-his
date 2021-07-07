@@ -66,7 +66,7 @@ public class RevenueController extends BaseController {
      *       }
      */
     @GetMapping("queryAllRevenueData")
-    @HystrixCommand
+//    @HystrixCommand
     public AjaxResult queryAllRevenueData(RevenueQueryDto revenueQueryDto){
         //如果没有选择开始日期和结果日期，就查询当天的数据
         if(revenueQueryDto.getBeginTime()==null){
