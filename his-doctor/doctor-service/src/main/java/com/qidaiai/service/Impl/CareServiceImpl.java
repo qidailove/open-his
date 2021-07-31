@@ -70,9 +70,6 @@ public class CareServiceImpl implements CareService {
 
     @Override
     public List<CareOrder> queryCareOrdersByChId(String chId) {
-//        QueryWrapper<CareOrder> qw=new QueryWrapper<>();
-//        qw.eq(CareOrder.COL_CH_ID,chId);
-//        return this.careOrderMapper.selectList(qw);
         //自定义语句
         return this.careOrderMapper.selectListBySql(chId);
     }
