@@ -96,7 +96,8 @@ public class CareServiceImpl implements CareService {
         BeanUtil.copyProperties(careOrderDto,careOrder);
         careOrder.setCreateBy(careOrderDto.getSimpleUser().getUserName());
         careOrder.setCreateTime(DateUtil.date());
-        int i=this.careOrderMapper.insert(careOrder);//保存处方主表
+        //保存处方主表
+        int i=this.careOrderMapper.insert(careOrder);
         List<CareOrderItemDto> careOrderItems = careOrderFormDto.getCareOrderItems();
         //保存详情数据
         for (CareOrderItemDto careOrderItemDto : careOrderItems) {
@@ -104,7 +105,8 @@ public class CareServiceImpl implements CareService {
             BeanUtil.copyProperties(careOrderItemDto,careOrderItem);
             careOrderItem.setCoId(careOrder.getCoId());
             careOrderItem.setCreateTime(DateUtil.date());
-            careOrderItem.setStatus(Constants.ORDER_DETAILS_STATUS_0);//未支付
+            //未支付
+            careOrderItem.setStatus(Constants.ORDER_DETAILS_STATUS_0);
             careOrderItem.setItemId(IdGeneratorSnowflake.generatorIdWithProfix(Constants.ID_PROFIX_ITEM));
             this.careOrderItemMapper.insert(careOrderItem);
         }
@@ -121,7 +123,8 @@ public class CareServiceImpl implements CareService {
     public int deleteCareOrderItemByItemId(String itemId) {
         //注意点，如果删除了，要更新careOrder主表的all_amount
         CareOrderItem careOrderItem=this.careOrderItemMapper.selectById(itemId);
-        String coId=careOrderItem.getCoId();//取出主表ID
+        //取出主表ID
+        String coId=careOrderItem.getCoId();
         //删除
         int i=this.careOrderItemMapper.deleteById(itemId);
 
@@ -177,9 +180,11 @@ public class CareServiceImpl implements CareService {
         for (CareOrderItem careOrderItem : careOrderItems) {
             //库存扣减
             int i=this.medicinesService.deductionMedicinesStorage(Long.valueOf(careOrderItem.getItemRefId()),careOrderItem.getNum().longValue());
-            if(i>0){//说明库存够
+            if(i>0){
+                //说明库存够
                 //更新处方详情状态
-                careOrderItem.setStatus(Constants.ORDER_DETAILS_STATUS_3);//已完成
+                //已完成
+                careOrderItem.setStatus(Constants.ORDER_DETAILS_STATUS_3);
                 this.careOrderItemMapper.updateById(careOrderItem);
                 //更新收费详情状态
                 OrderChargeItem orderChargeItem=new OrderChargeItem();
