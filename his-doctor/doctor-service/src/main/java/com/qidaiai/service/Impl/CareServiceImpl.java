@@ -44,11 +44,8 @@ public class CareServiceImpl implements CareService {
 
     @Override
     public List<CareHistory> queryCareHistoryByPatientId(String patientId) {
-//        QueryWrapper<CareHistory> qw = new QueryWrapper<>();
-//        qw.eq(CareHistory.COL_PATIENT_ID, patientId);
         //自定义sql语句
         return this.careHistoryMapper.selectListBySql(patientId);
-//        return this.careHistoryMapper.selectList(qw);
     }
 
     @Override
