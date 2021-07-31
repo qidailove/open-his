@@ -62,7 +62,7 @@ public class CareController extends BaseController {
 
 
     /**
-     * 查询就诊中的挂号信息
+     * 查询就诊中的患者挂号信息
      * GET/doctor/care/queryVisitingRegistration/{scheudlingType}
      */
     @GetMapping("queryVisitingRegistration/{scheudlingType}")
