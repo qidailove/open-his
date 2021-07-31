@@ -213,7 +213,6 @@ public class CareServiceImpl implements CareService {
 
     @Override
     public CareOrder queryCareOrderByCoId(String coId) {
-        System.out.println("haha");
         return this.careOrderMapper.selectById(coId);
     }
 
