@@ -60,7 +60,7 @@ public class CheckItemServiceImpl implements CheckItemService{
     @Override
     public int deleteCheckItemByIds(Long[] checkItemIds) {
         List<Long> ids= Arrays.asList(checkItemIds);
-        if(ids.size()>0){
+        if(ids != null && ids.size() > 0){
             return this.checkItemMapper.deleteBatchIds(ids);
         }
         return 0;
